@@ -38,7 +38,7 @@
       </v-content>
       <v-footer class="pa-3" color="indigo">
         <v-spacer></v-spacer>
-        <div>&copy; {{ new Date().getFullYear() }}</div>
+        <div class="white--text">&copy; {{ new Date().getFullYear() }}</div>
       </v-footer>
     </v-app>
   </div>
