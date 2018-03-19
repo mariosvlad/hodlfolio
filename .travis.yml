@@ -20,4 +20,4 @@ after_success:
   - cd dist && git init
   - git add . && git commit -m "Deploy to dokku"
   - git remote add deploy dokku@dokku.hodlfolio.org:hodlfolio
-  - git push dokku master --force
+  - git push deploy master --force
