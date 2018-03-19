@@ -8,7 +8,7 @@ import Knex from 'knex';
 import { Model } from 'objection';
 import path from 'path';
 import knexConfig from './knexfile';
-import routing from './api/';
+import router from './api/';
 import { port } from './config';
 import errorHandler from './utils/errorHandler';
 
@@ -30,13 +30,15 @@ app
   .use(logger())
   .use(bodyParser())
   .use(helmet())
-  .use(errorHandler);
-
-routing(app).then(() => {
-  app.use(serve(staticFilesPath));
-  app.use(async (ctx) => {
+  .use(errorHandler)
+  .use(router)
+  .use(serve(staticFilesPath))
+  .use(async (ctx) => {
     await send(ctx, 'index.html', { root: staticFilesPath });
   });
+
+const server = app.listen(port).on('error', (err) => {
+  console.error(err);
 });
 
-export default app.listen(port);
+module.exports = server;

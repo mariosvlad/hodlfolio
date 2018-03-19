@@ -1,20 +1,12 @@
-import glob from 'glob';
+import combineRouters from 'koa-combine-routers';
+import assetRouter from './asset/asset.index.js';
+import dataRouter from './data/data.index.js';
+import walletRouter from './wallet/wallet.index.js';
 
-module.exports = function initModules(app) {
-  return new Promise((resolve) => {
-    glob(`${__dirname}/**/*.index.js`, (err, matches) => {
-      if (err) {
-        throw err;
-      }
+const router = combineRouters([
+  assetRouter,
+  dataRouter,
+  walletRouter,
+]);
 
-      matches.forEach((mod) => {
-        const router = require(`${mod}`).default;
-
-        app.use(router.routes()).use(router.allowedMethods({
-          throw: true,
-        }));
-      });
-      return resolve();
-    });
-  });
-};
+export default router;
