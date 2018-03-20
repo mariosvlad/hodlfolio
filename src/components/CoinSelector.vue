@@ -24,7 +24,7 @@
 export default {
   computed: {
     coins() {
-      return this.$store.state.coinsArray.slice(0, 300);
+      return this.$store.state.coinsArray.slice();
     },
     coin: {
       get() {
