@@ -24,6 +24,7 @@
     "axios": "^0.18.0",
     "big.js": "^5.0.0",
     "chart.js": "^2.7.2",
+    "cryptocoins-icons": "^2.7.0",
     "glob": "^7.1.2",
     "highcharts": "^6.0.7",
     "interval-cache": "^1.0.0",

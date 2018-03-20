@@ -38,7 +38,7 @@
       </v-content>
       <v-footer class="pa-3" color="indigo">
         <v-spacer></v-spacer>
-        <div class="white--text">&copy; {{ new Date().getFullYear() }}</div>
+        <a class="white--text" href="https://github.com/mariosvlad/hodlfolio" target="_blank">Source Code</a>
       </v-footer>
     </v-app>
   </div>
@@ -48,7 +48,7 @@
 // eslint-disable-next-line
 import 'material-design-icons/iconfont/material-icons.css';
 import 'vuetify/dist/vuetify.min.css';
-import '../static/fonts/cryptocoins.css';
+import 'cryptocoins-icons/webfont/cryptocoins.css';
 
 export default {
   name: 'app',

@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title class="title">
-      Cryptocurrencies
+      Assets
       <v-spacer></v-spacer>
       <v-text-field
         append-icon="search"
@@ -14,7 +14,7 @@
         :headers="headers"
         :items="assets"
         :search="search"
-        no-data-text="No cryptocurrencies added, use form below to add"
+        no-data-text="No assets added, use form below to add"
       >
       <template slot="items" slot-scope="props">
         <td class="text-xs-left">{{ props.item.label }}</td>

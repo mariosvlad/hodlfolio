@@ -1,6 +1,6 @@
 # HodlFolio
 
-> A Vue.js project
+> Cryptocurrency portfolio tracking for HODLers
 
 [![Build Status](https://travis-ci.org/mariosvlad/hodlfolio.svg?branch=master)](https://travis-ci.org/mariosvlad/hodlfolio)
 
