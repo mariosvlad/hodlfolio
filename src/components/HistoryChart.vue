@@ -56,6 +56,7 @@ export default {
   data() {
     return {
       chartData: [],
+      timeframeToGet: '7day',
       timeframe: '7day',
       loading: true,
     };
@@ -73,14 +74,15 @@ export default {
   methods: {
     updateData() {
       this.loading = true;
-      axios.get(`/api/data/history/${this.coin}/${this.timeframe}`)
+      axios.get(`/api/data/history/${this.coin}/${this.timeframeToGet}`)
         .then(({ data }) => {
+          this.timeframe = this.timeframeToGet;
           this.chartData = data;
           this.loading = false;
         });
     },
     updateTimeFrame(timeframe) {
-      this.timeframe = timeframe;
+      this.timeframeToGet = timeframe;
       this.updateData();
     },
   },
