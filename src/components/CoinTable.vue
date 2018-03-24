@@ -14,7 +14,7 @@
         :headers="headers"
         :items="assets"
         :search="search"
-        no-data-text="No assets added, use form below to add"
+        no-data-text="No assets added"
       >
       <template slot="items" slot-scope="props">
         <td class="text-xs-left">{{ props.item.label }}</td>

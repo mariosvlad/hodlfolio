@@ -1,27 +1,34 @@
 <template>
-    <v-form v-model="valid" row ref="form" lazy-validation>
-      <v-layout row wrap>
-        <v-flex xs12 sm5 class="px-1">
-          <coin-selector></coin-selector>
-        </v-flex>
-        <v-flex xs12 sm5 class="px-1">
-          <v-text-field
-            label="Amount"
-            type="number"
-            v-model.number="amount"
-            :rules="[v => !!v || 'Amount is required']"
-            required
-          ></v-text-field>
-        </v-flex>
-        <v-flex xs4 sm2>
-          <v-btn
-            @click="submit"
-            :disabled="!valid"
-            color="info"
-          >Add</v-btn>
-        </v-flex>
-      </v-layout>
-    </v-form>
+  <div>
+    <v-btn color="green" dark fab fixed bottom right @click="showAddCoinDialog = true">
+        <v-icon>add</v-icon>
+    </v-btn>
+    <v-dialog v-model="showAddCoinDialog" max-width="400px">
+      <v-card>
+        <v-form v-model="valid" row ref="form" lazy-validation>
+          <v-card-title>
+            <span class="headline">Add Cryptocurrency</span>
+          </v-card-title>
+          <v-card-text>
+            <coin-selector></coin-selector>
+              <v-text-field
+                label="Amount"
+                type="number"
+                v-model.number="amount"
+                :rules="[v => !!v || 'Amount is required']"
+                required
+              ></v-text-field>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="blue darken-1" flat @click.native="showAddCoinDialog = false">Cancel</v-btn>
+            <v-btn color="blue darken-1" flat @click="submit(false)" :disabled="!valid">Add</v-btn>
+            <v-btn color="blue darken-1" flat @click="submit(true)" :disabled="!valid">Add and close</v-btn>
+          </v-card-actions>
+        </v-form>
+      </v-card>
+    </v-dialog>
+  </div>
 </template>
 
 <script>
@@ -34,6 +41,7 @@ export default {
   data() {
     return {
       valid: null,
+      showAddCoinDialog: false,
     };
   },
   computed: {
@@ -47,9 +55,12 @@ export default {
     },
   },
   methods: {
-    submit() {
+    submit(close) {
       if (this.$refs.form.validate()) {
         this.$store.dispatch('addCoin', {});
+        if (close) {
+          this.showAddCoinDialog = false;
+        }
       }
     },
   },

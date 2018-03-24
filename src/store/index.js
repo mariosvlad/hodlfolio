@@ -10,7 +10,7 @@ const state = {
   assets: [],
   newCoin: {
     name: '',
-    amount: 1,
+    amount: null,
   },
   coins: new Map(),
   coinsSetTracker: 1,

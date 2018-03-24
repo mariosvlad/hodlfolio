@@ -37,7 +37,6 @@
         <router-view></router-view>
       </v-content>
       <v-footer class="pa-3" color="indigo">
-        <v-spacer></v-spacer>
         <a class="white--text" href="https://github.com/mariosvlad/hodlfolio"
             target="_blank" rel="noopener">Source Code</a>
       </v-footer>

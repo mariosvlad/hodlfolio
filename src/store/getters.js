@@ -21,7 +21,7 @@ export default {
 
   fetchedData: state => state.fetchedWallet && state.fetchedCoins,
 
-  isReadOnly: state => state.currentWallet.length === 8,
+  isReadOnly: state => !state.currentWallet || state.currentWallet.length === 8,
 
   totalValue: (state, getters) => {
     let sum = 0;

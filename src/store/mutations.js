@@ -14,10 +14,7 @@ export default {
         state.assets.push(data);
       }
     }
-    state.newCoin = {
-      name: '',
-      amount: 1,
-    };
+    state.newCoin.name = '';
   },
   REMOVECOIN(state, { coin }) {
     state.assets = state.assets.filter(asset => asset.coin !== coin);

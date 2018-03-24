@@ -1,6 +1,6 @@
 <template>
   <v-select
-    label="Select"
+    label="Select cryptocurrency"
     :items="coins"
     v-model="coin"
     item-text="label"
