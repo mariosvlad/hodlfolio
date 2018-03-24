@@ -10,6 +10,8 @@ export default class Wallet extends Model {
 
     properties: {
       id: { type: 'string' },
+      readonlyId: { type: 'string' },
+      label: { type: 'string' },
       lastValue: { type: 'number' },
     },
   };
@@ -27,6 +29,6 @@ export default class Wallet extends Model {
 
   $formatJson(obj) {
     const json = super.$formatJson(obj);
-    return omit(json, ['id', 'created_at', 'updated_at']);
+    return omit(json, ['id', 'readonlyId', 'created_at', 'updated_at']);
   }
 }

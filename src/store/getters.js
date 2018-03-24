@@ -21,6 +21,8 @@ export default {
 
   fetchedData: state => state.fetchedWallet && state.fetchedCoins,
 
+  isReadOnly: state => state.currentWallet.length === 8,
+
   totalValue: (state, getters) => {
     let sum = 0;
     const values = getters.assetsDetails.map(asset => Number(asset.value));

@@ -7,6 +7,7 @@ import serve from 'koa-static';
 import Knex from 'knex';
 import { Model } from 'objection';
 import path from 'path';
+import ratelimit from 'koa-ratelimit-lru';
 import knexConfig from './knexfile';
 import router from './api/';
 import { port } from './config';
@@ -27,6 +28,11 @@ Model.knex(knex);
 const app = new Koa();
 
 app
+  .use(ratelimit({
+    duration: 60000,
+    rate: 250,
+    errorMessage: 'Slow down your requests',
+  }))
   .use(logger())
   .use(bodyParser())
   .use(helmet())

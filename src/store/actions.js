@@ -8,7 +8,11 @@ export default {
         commit('SETCURRENTWALLET', id);
         commit('SETWALLET', data);
       })
-      .catch(() => router.replace('/'));
+      .catch((err) => {
+        if (err.response && err.response.status === 404) {
+          router.replace('/');
+        }
+      });
   },
   async addCoin({ commit, state }, { coin, amount }) {
     const coinData = {

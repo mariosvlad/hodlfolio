@@ -13,7 +13,7 @@
         <coin-table></coin-table>
       </v-flex>
     </v-layout>
-    <v-layout row>
+    <v-layout v-if="!this.$store.getters.isReadOnly" row>
       <v-flex xs12 d-flex>
         <add-coin></add-coin>
       </v-flex>

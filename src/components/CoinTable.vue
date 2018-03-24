@@ -22,7 +22,7 @@
         <td class="text-xs-right">{{ props.item.change }}</td>
         <td class="text-xs-right">{{ props.item.value }}</td>
         <td class="text-xs-right">
-          <v-edit-dialog
+          <v-edit-dialog v-if="!isReadOnly"
             lazy
           > {{ props.item.amount }}
             <v-text-field
@@ -34,13 +34,14 @@
               @change="coinSave(props.item)"
             ></v-text-field>
           </v-edit-dialog>
+          <div v-else>{{props.item.amount}}</div>
         </td>
         <td>
           <v-flex d-inline-flex>
             <v-btn fab small dark color="indigo" @click="openCoinHistory(props.item.coin)">
               <v-icon dark>timeline</v-icon>
             </v-btn>
-            <v-btn fab small @click="coinDelete(props.item.coin)">
+            <v-btn v-if="!isReadOnly" fab small @click="coinDelete(props.item.coin)">
               <v-icon>delete</v-icon>
             </v-btn>
           </v-flex>
@@ -83,6 +84,9 @@ export default {
       return Big(this.$store.getters.totalValue)
         .round(1)
         .toString();
+    },
+    isReadOnly() {
+      return this.$store.getters.isReadOnly;
     },
   },
   data() {

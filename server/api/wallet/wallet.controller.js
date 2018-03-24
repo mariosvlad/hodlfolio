@@ -5,8 +5,9 @@ const uidgen = new UIDGenerator(256, UIDGenerator.BASE62);
 
 export async function add(ctx) {
   const id = await uidgen.generate();
+  const readonlyId = id.slice(0, 9);
   try {
-    await Wallet.query().insert({ id });
+    await Wallet.query().insert({ id, readonlyId });
     ctx.body = { id };
   } catch (err) {
     ctx.throw(400, err);
@@ -16,9 +17,17 @@ export async function add(ctx) {
 export async function get(ctx) {
   const { id } = ctx.params;
   try {
-    const dbResult = await Wallet.query()
-      .where('id', id)
-      .eager('assets');
+    let dbResult;
+    if (id.length > 8) {
+      dbResult = await Wallet.query()
+        .where('id', id)
+        .eager('assets');
+    } else {
+      dbResult = await Wallet.query()
+        .where('readonlyId', id)
+        .eager('assets')
+        .omit(['id']);
+    }
 
     if (dbResult.length === 0) {
       ctx.throw(404);
