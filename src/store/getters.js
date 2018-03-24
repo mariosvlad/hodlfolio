@@ -70,17 +70,17 @@ export default {
     const overralChange = getters.overral24hChange;
     const overral = {
       label: 'Summary',
-      description: 'change since last 24h',
+      description: 'change last 24h',
       valueChange: overralChange.times(totalValue).div(100),
       change: overralChange.round(3).toString(),
       icon: 'trending_flat',
       color: 'blue-grey',
     };
-    if (overralChange.gte(0.5)) {
+    if (overralChange.gte(1)) {
       overral.icon = 'trending_up';
       overral.color = 'green';
     }
-    if (overralChange.lte(-0.5)) {
+    if (overralChange.lte(-1)) {
       overral.icon = 'trending_down';
       overral.color = 'red';
     }

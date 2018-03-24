@@ -1,9 +1,14 @@
 import axios from 'axios';
+import router from '../router';
 
 export default {
   async getWallet({ commit }, id) {
-    commit('SETCURRENTWALLET', id);
-    commit('SETWALLET', await axios.get(`/api/wallets/${id}`));
+    axios.get(`/api/wallets/${id}`)
+      .then((data) => {
+        commit('SETCURRENTWALLET', id);
+        commit('SETWALLET', data);
+      })
+      .catch(() => router.replace('/'));
   },
   async addCoin({ commit, state }, { coin, amount }) {
     const coinData = {

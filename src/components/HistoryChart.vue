@@ -79,16 +79,17 @@ export default {
           this.loading = false;
         });
     },
+    updateTimeFrame(timeframe) {
+      this.timeframe = timeframe;
+      this.updateData();
+    },
   },
   computed: {
     chartOptions() {
       const buttons = dateRanges.map(options => ({
         ...options,
         events: {
-          click: () => {
-            this.timeframe = options.timeframe;
-            this.updateData();
-          },
+          click: () => { this.updateTimeFrame(options.timeframe); },
         },
       }));
       return {

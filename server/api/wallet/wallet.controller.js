@@ -19,7 +19,12 @@ export async function get(ctx) {
     const dbResult = await Wallet.query()
       .where('id', id)
       .eager('assets');
-    [ctx.body] = dbResult;
+
+    if (dbResult.length === 0) {
+      ctx.throw(404);
+    } else {
+      [ctx.body] = dbResult;
+    }
   } catch (err) {
     ctx.throw(400, err);
   }
