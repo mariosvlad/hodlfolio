@@ -29,6 +29,7 @@
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         <v-toolbar-title>HodlFolio</v-toolbar-title>
         <v-spacer></v-spacer>
+        <share-url></share-url>
         <v-btn v-if="$route.name === 'Wallet'" icon @click="refreshData()" :loading="!$store.getters.fetchedData">
           <v-icon>refresh</v-icon>
         </v-btn>
@@ -50,12 +51,17 @@ import 'material-design-icons/iconfont/material-icons.css';
 import 'vuetify/dist/vuetify.min.css';
 import 'cryptocoins-icons/webfont/cryptocoins.css';
 
+import ShareUrl from '@/components/ShareUrl';
+
 export default {
   name: 'app',
   data() {
     return {
       drawer: false,
     };
+  },
+  components: {
+    ShareUrl,
   },
   methods: {
     refreshData() {
