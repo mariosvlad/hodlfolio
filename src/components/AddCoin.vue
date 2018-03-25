@@ -21,9 +21,9 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" flat @click.native="showAddCoinDialog = false">Cancel</v-btn>
-            <v-btn color="blue darken-1" flat @click="submit(false)" :disabled="!valid">Add</v-btn>
-            <v-btn color="blue darken-1" flat @click="submit(true)" :disabled="!valid">Add and close</v-btn>
+            <v-btn color="blue darken-1" flat small  @click.native="showAddCoinDialog = false">Cancel</v-btn>
+            <v-btn color="blue darken-1" flat small @click="submit(false)" :disabled="!valid">Add</v-btn>
+            <v-btn color="blue darken-1" flat small @click="submit(true)" :disabled="!valid">Add and close</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
@@ -66,3 +66,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .btn--small {
+    min-width: 60px
+  }
+</style>

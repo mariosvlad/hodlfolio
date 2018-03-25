@@ -15,6 +15,7 @@ const state = {
   coins: new Map(),
   coinsSetTracker: 1,
   coinsArray: [],
+  loadingCoinsData: true,
   currentWallet: localStorage.getItem('wallet'),
   fetchedWallet: false,
   fetchedCoins: false,

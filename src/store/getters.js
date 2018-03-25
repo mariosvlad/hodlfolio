@@ -39,6 +39,7 @@ export default {
   },
 
   overral24hChange: (state, getters) => getters.assetsDetails
+    .filter(asset => asset.value)
     .map(asset => Big(asset.value).div(getters.totalValue).times(asset.change))
     .reduce((p, c) => Big(p).plus(c), 0),
 

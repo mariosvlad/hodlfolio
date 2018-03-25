@@ -1,5 +1,5 @@
 <template>
-  <v-card v-show="!$store.getters.fetchedData || assets.length!==0" >
+  <v-card v-show="$store.getters.fetchedData && assets.length!==0" >
     <highcharts :options="chartOptions"></highcharts>
   </v-card>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card v-if="$store.getters.fetchedData && assets.length!==0">
     <v-card-title class="title">
       Assets
       <v-spacer></v-spacer>

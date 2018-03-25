@@ -49,7 +49,21 @@ export default {
     });
   },
   async getCoinsOverview({ commit }) {
-    commit('SETCOINSLOADING', true);
     commit('SETCOINS', await axios.get('/api/data/coins'));
+  },
+  async refreshData({ commit, state }) {
+    const id = state.currentWallet;
+    commit('SETCOINSLOADING', true);
+    axios.get(`/api/wallets/${id}`)
+      .then(async (data) => {
+        commit('SETCOINS', await axios.get('/api/data/coins'));
+        commit('SETWALLET', data);
+        commit('SETCOINSLOADING', false);
+      })
+      .catch((err) => {
+        if (err.response && err.response.status === 404) {
+          router.replace('/');
+        }
+      });
   },
 };

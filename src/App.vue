@@ -30,7 +30,9 @@
         <v-toolbar-title>HodlFolio</v-toolbar-title>
         <v-spacer></v-spacer>
         <share-url></share-url>
-        <v-btn v-if="$route.name === 'Wallet'" icon @click="refreshData()" :loading="!$store.getters.fetchedData">
+        <v-btn v-if="$route.name === 'Wallet'" icon @click="refreshData()"
+            :loading="!$store.getters.fetchedData || $store.state.loadingCoinsData"
+        >
           <v-icon>refresh</v-icon>
         </v-btn>
       </v-toolbar>
@@ -46,12 +48,17 @@
 </template>
 
 <script>
-// eslint-disable-next-line
+/* eslint-disable */
+
+import './assets/fonts/index.css';
 import 'material-design-icons/iconfont/material-icons.css';
-import 'vuetify/dist/vuetify.min.css';
 import 'cryptocoins-icons/webfont/cryptocoins.css';
+import 'vuetify/dist/vuetify.min.css';
 
 import ShareUrl from '@/components/ShareUrl';
+
+/* eslint-enable */
+
 
 export default {
   name: 'app',
@@ -65,8 +72,7 @@ export default {
   },
   methods: {
     refreshData() {
-      this.$store.dispatch('getCoinsOverview');
-      this.$store.dispatch('getWallet', this.$store.state.currentWallet);
+      this.$store.dispatch('refreshData');
     },
   },
   created() {

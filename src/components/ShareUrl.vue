@@ -7,16 +7,15 @@
       <v-card>
           <v-card-text>
             <v-layout row>
-            <v-flex>
-              <v-text-field
-                v-model="url" readonly ref="textarea"
-              ></v-text-field>
-            </v-flex>
-            <v-spacer></v-spacer>
+              <v-flex>
+                <v-text-field
+                  v-model="url" readonly ref="textarea"
+                ></v-text-field>
+              </v-flex>
               <v-btn color="info" @click="copyUrl">
                 Copy
               </v-btn>
-          </v-layout>
+            </v-layout>
             <v-checkbox v-if="!$store.getters.isReadOnly"
               label="Allow editing"
               v-model="editable"

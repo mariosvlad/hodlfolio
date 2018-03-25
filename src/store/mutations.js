@@ -36,8 +36,9 @@ export default {
     state.coinsSetTracker += 1;
     state.coinsArray = Array.from(state.coins.values());
     state.fetchedCoins = true;
+    state.loadingCoinsData = false;
   },
   SETCOINSLOADING(state, loading) {
-    state.fetchedCoins = !loading;
+    state.loadingCoinsData = loading;
   },
 };
