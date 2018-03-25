@@ -18,9 +18,9 @@
       >
       <template slot="items" slot-scope="props">
         <td class="text-xs-left">{{ props.item.label }}</td>
+        <td class="text-xs-right">{{ props.item.value }}</td>
         <td class="text-xs-right">{{ props.item.price }}</td>
         <td class="text-xs-right">{{ props.item.change }}</td>
-        <td class="text-xs-right">{{ props.item.value }}</td>
         <td class="text-xs-right">
           <v-edit-dialog v-if="!isReadOnly"
             lazy
@@ -96,10 +96,12 @@ export default {
       currentCoinHistory: null,
       pagination: {},
       headers: [
-        { text: 'Coin', value: 'label', align: 'left' },
+        {
+          text: 'Coin', value: 'label', align: 'left', sortable: false,
+        },
+        { text: 'Total Value($)', value: 'value', align: 'right' },
         { text: 'Price ($)', value: 'price', align: 'right' },
         { text: '24hr Change(%)', value: 'change', align: 'right' },
-        { text: 'Total Value($)', value: 'value', align: 'right' },
         { text: 'Amount', value: 'amount', align: 'right' },
       ],
     };

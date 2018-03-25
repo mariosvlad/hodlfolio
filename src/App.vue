@@ -29,7 +29,7 @@
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         <v-toolbar-title>HodlFolio</v-toolbar-title>
         <v-spacer></v-spacer>
-        <share-url></share-url>
+        <share-url v-if="$route.name === 'Wallet'"></share-url>
         <v-btn v-if="$route.name === 'Wallet'" icon @click="refreshData()"
             :loading="!$store.getters.fetchedData || $store.state.loadingCoinsData"
         >
