@@ -14,6 +14,7 @@
         :headers="headers"
         :items="assets"
         :search="search"
+        :pagination.sync="pagination"
         no-data-text="No assets added"
       >
       <template slot="items" slot-scope="props">
@@ -94,11 +95,12 @@ export default {
       search: '',
       coinHistoryDialog: null,
       currentCoinHistory: null,
-      pagination: {},
+      pagination: {
+        sortBy: 'value',
+        descending: true,
+      },
       headers: [
-        {
-          text: 'Coin', value: 'label', align: 'left', sortable: false,
-        },
+        { text: 'Coin', value: 'label', align: 'left' },
         { text: 'Total Value($)', value: 'value', align: 'right' },
         { text: 'Price ($)', value: 'price', align: 'right' },
         { text: '24hr Change(%)', value: 'change', align: 'right' },
