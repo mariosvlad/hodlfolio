@@ -19,6 +19,7 @@
             <v-checkbox v-if="!$store.getters.isReadOnly"
               label="Allow editing"
               v-model="editable"
+              hide-details="true"
             ></v-checkbox>
           </v-card-text>
           <v-card-actions>
