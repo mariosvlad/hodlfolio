@@ -26,7 +26,6 @@ module.exports = {
       'always',
       {
         js: 'never',
-        vue: 'never',
       },
     ],
     // allow optionalDependencies

@@ -68,7 +68,7 @@
 <script>
 import Big from 'big.js';
 
-const Chart = () => import('@/components/HistoryChart');
+const Chart = () => import('./HistoryChart.vue');
 
 export default {
   components: {

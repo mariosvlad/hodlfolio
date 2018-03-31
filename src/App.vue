@@ -55,7 +55,7 @@ import 'material-design-icons/iconfont/material-icons.css';
 import 'cryptocoins-icons/webfont/cryptocoins.css';
 import 'vuetify/dist/vuetify.min.css';
 
-import ShareUrl from '@/components/ShareUrl';
+import ShareUrl from './components/ShareUrl.vue';
 
 /* eslint-enable */
 

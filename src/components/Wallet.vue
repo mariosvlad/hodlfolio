@@ -18,13 +18,13 @@
 </template>
 
 <script>
-import CoinSelector from '@/components/CoinSelector';
-import CoinTable from '@/components/CoinTable';
-import AddCoin from '@/components/AddCoin';
-import Highlights from '@/components/Highlights';
+import CoinSelector from './CoinSelector.vue';
+import CoinTable from './CoinTable.vue';
+import AddCoin from './AddCoin.vue';
+import Highlights from './Highlights.vue';
 import store from '../store';
 
-const OverviewPieChart = () => import('@/components/OverviewPieChart');
+const OverviewPieChart = () => import('./OverviewPieChart.vue');
 
 export default {
   components: {

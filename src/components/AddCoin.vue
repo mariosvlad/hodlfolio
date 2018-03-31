@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import CoinSelector from '@/components/CoinSelector';
+import CoinSelector from './CoinSelector.vue';
 
 export default {
   components: {
