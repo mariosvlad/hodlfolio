@@ -19,7 +19,7 @@ const intervalCache = new Cache()
         change: coin.cap24hrChange,
       }
     ));
-    return allCoinsData;
+    return JSON.stringify(allCoinsData);
   }, 0)
   .start();
 
