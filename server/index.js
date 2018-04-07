@@ -4,6 +4,7 @@ import logger from 'koa-logger';
 import helmet from 'koa-helmet';
 import send from 'koa-send';
 import serve from 'koa-static';
+import compress from 'koa-compress';
 import Knex from 'knex';
 import { Model } from 'objection';
 import path from 'path';
@@ -34,6 +35,7 @@ app
     errorMessage: 'Slow down your requests',
   }))
   .use(logger())
+  .use(compress())
   .use(bodyParser())
   .use(helmet())
   .use(errorHandler)
