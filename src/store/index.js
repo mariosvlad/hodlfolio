@@ -19,6 +19,7 @@ const state = {
   currentWallet: localStorage.getItem('wallet'),
   fetchedWallet: false,
   fetchedCoins: false,
+  showAddCoinDialog: false,
 };
 
 const store = new Vuex.Store({

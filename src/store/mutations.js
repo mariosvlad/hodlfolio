@@ -2,6 +2,9 @@ export default {
   SETWALLET(state, { data }) {
     state.assets = data.assets;
     state.fetchedWallet = true;
+    if (data.assets.length === 0) {
+      state.showAddCoinDialog = true;
+    }
   },
   ADDCOIN(state, { data, isUpdate }) {
     if (data && data.coin) {
@@ -40,5 +43,8 @@ export default {
   },
   SETCOINSLOADING(state, loading) {
     state.loadingCoinsData = loading;
+  },
+  SHOWADDCOINDIALOG(state, show) {
+    state.showAddCoinDialog = show;
   },
 };

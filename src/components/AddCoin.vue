@@ -41,7 +41,6 @@ export default {
   data() {
     return {
       valid: null,
-      showAddCoinDialog: false,
     };
   },
   computed: {
@@ -51,6 +50,14 @@ export default {
       },
       set(value) {
         this.$store.commit('SETNEWCOINAMOUNT', value);
+      },
+    },
+    showAddCoinDialog: {
+      get() {
+        return this.$store.state.showAddCoinDialog;
+      },
+      set(value) {
+        this.$store.commit('SHOWADDCOINDIALOG', value);
       },
     },
   },
