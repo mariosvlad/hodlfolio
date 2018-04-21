@@ -4,7 +4,7 @@
       <v-container fill-height>
         <v-layout align-center>
           <v-flex>
-            <h3 class="display-2">Welcome to HodlFolio</h3>
+            <h3 class="display-2">Welcome to Hodlfolio</h3>
             <span class="subheading">Cryptocurrency portfolio tracking for HODLers</span>
             <v-divider class="my-3"></v-divider>
             <div class="title mb-3">Create a wallet to track your coins</div>

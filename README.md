@@ -1,4 +1,4 @@
-# HodlFolio
+# Hodlfolio
 
 > Cryptocurrency portfolio tracking for HODLers
 
