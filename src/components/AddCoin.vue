@@ -21,7 +21,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" flat small  @click.native="showAddCoinDialog = false">Cancel</v-btn>
+            <v-btn color="grey darken-1" flat small @click.native="showAddCoinDialog = false">Cancel</v-btn>
             <v-btn color="blue darken-1" flat small @click="submit(false)" :disabled="!valid">Add</v-btn>
             <v-btn color="blue darken-1" flat small @click="submit(true)" :disabled="!valid">Add and close</v-btn>
           </v-card-actions>
