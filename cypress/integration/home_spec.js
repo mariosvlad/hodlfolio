@@ -1,5 +1,3 @@
-
-
 describe('Homepage', () => {
   it('assert that <title> is correct', () => {
     cy.visit('/')

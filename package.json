@@ -16,7 +16,8 @@
     "lint": "eslint --ext .js,.vue src",
     "migrate": "knex migrate:latest --cwd server",
     "test": "jest --forceExit",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "cypress:run:ci": "node serve_and_run_cypress_ci.js"
   },
   "jest": {
     "testEnvironment": "node"
