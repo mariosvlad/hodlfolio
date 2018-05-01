@@ -16,6 +16,7 @@
     "lint": "eslint --ext .js,.vue src",
     "migrate": "knex migrate:latest --cwd server",
     "test": "jest --forceExit",
+    "coverage": "jest --forceExit --coverage",
     "cypress:open": "cypress open",
     "cypress:run:ci": "node serve_and_run_cypress_ci.js"
   },
@@ -57,6 +58,7 @@
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
+    "@types/jest": "^22.2.3",
     "autoprefixer": "^8.1.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
