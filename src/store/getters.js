@@ -72,7 +72,7 @@ export default {
     const totalValue = Big(getters.totalValue);
     const overralChange = getters.overral24hChange;
     const overral = {
-      label: 'Overall',
+      label: `Total: $${totalValue.round(0).toString()}`,
       description: 'change last 24h',
       valueChange: overralChange.times(totalValue).div(100),
       change: overralChange.round(3).toString(),

@@ -14,7 +14,7 @@
                     <div class="title text-xs-center">{{card.valueChange}}</div>
                   </v-flex>
                   <v-flex class="pa-0">
-                    <div class="subheading text-xs-center">{{card.change}}%</div>
+                    <div class="subheading text-xs-center">({{card.change}}%)</div>
                   </v-flex>
                 </v-flex>
               </v-layout>
