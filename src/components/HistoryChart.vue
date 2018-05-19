@@ -74,12 +74,11 @@ export default {
   methods: {
     updateData() {
       this.loading = true;
-      axios.get(`/api/data/history/${this.coin}/${this.timeframeToGet}`)
-        .then(({ data }) => {
-          this.timeframe = this.timeframeToGet;
-          this.chartData = data;
-          this.loading = false;
-        });
+      axios.get(`/api/data/history/${this.coin}/${this.timeframeToGet}`).then(({ data }) => {
+        this.timeframe = this.timeframeToGet;
+        this.chartData = data;
+        this.loading = false;
+      });
     },
     updateTimeFrame(timeframe) {
       this.timeframeToGet = timeframe;
@@ -91,7 +90,9 @@ export default {
       const buttons = dateRanges.map(options => ({
         ...options,
         events: {
-          click: () => { this.updateTimeFrame(options.timeframe); },
+          click: () => {
+            this.updateTimeFrame(options.timeframe);
+          },
         },
       }));
       return {
@@ -102,10 +103,12 @@ export default {
           fontFamily: 'Roboto',
         },
         credits: false,
-        series: [{
-          name: this.coin,
-          data: this.chartData,
-        }],
+        series: [
+          {
+            name: this.coin,
+            data: this.chartData,
+          },
+        ],
         rangeSelector: {
           buttons,
           inputEnabled: false,

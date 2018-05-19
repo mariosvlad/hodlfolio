@@ -1,8 +1,0 @@
-{
-  "name": "Hodlfolio",
-  "short_name": "Hodlfolio",
-  "start_url": "/androidapp",
-  "display": "standalone",
-  "background_color": "#3F51B5",
-  "theme_color": "#3F51B5"
-}

@@ -38,13 +38,12 @@ export default {
 };
 </script>
 
-<style>
-.label {
+<style lang="sass">
+.label
   float: left
-}
 
-i {
+i
   font-size: 15px;
   float: right;
-}
+
 </style>

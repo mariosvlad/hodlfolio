@@ -33,7 +33,7 @@ export default {
     localStorage.setItem('wallet', walletId);
   },
   SETCOINS(state, { data }) {
-    data.forEach((coin) => {
+    data.forEach(coin => {
       state.coins.set(coin.coin, coin);
     });
     state.coinsSetTracker += 1;

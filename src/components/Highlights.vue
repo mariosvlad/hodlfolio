@@ -40,15 +40,13 @@
 export default {
   computed: {
     cards() {
-      return this.$store.getters.highlights
-        .map((highlight) => {
-          const card = { ...highlight };
-          if (card.valueChange) {
-            card.valueChange = Number(card.valueChange.round(1))
-              .toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-          }
-          return card;
-        });
+      return this.$store.getters.highlights.map(highlight => {
+        const card = { ...highlight };
+        if (card.valueChange) {
+          card.valueChange = Number(card.valueChange.round(1)).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+        }
+        return card;
+      });
     },
   },
 };

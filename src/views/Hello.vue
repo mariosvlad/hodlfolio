@@ -27,11 +27,10 @@ export default {
   name: 'hello',
   methods: {
     newWallet() {
-      axios.post('/api/wallets/', {})
-        .then((response) => {
-          this.$store.commit('SETCURRENTWALLET', response.data.id);
-          router.push({ path: `w/${response.data.id}` });
-        });
+      axios.post('/api/wallets/', {}).then(response => {
+        this.$store.commit('SETCURRENTWALLET', response.data.id);
+        router.push({ path: `w/${response.data.id}` });
+      });
     },
   },
   computed: {

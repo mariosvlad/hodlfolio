@@ -2,15 +2,14 @@ import Big from 'big.js';
 
 export default {
   assetsDetails: state =>
-    state.assets.map((asset) => {
+    state.assets.map(asset => {
       if (!state.coinsSetTracker) return {};
       const coinInfo = state.coins.get(asset.coin);
       const details = { ...coinInfo, ...asset };
       details.amount = Big(asset.amount);
 
       if (coinInfo) {
-        details.value = Big(asset.amount)
-          .times(coinInfo.price);
+        details.value = Big(asset.amount).times(coinInfo.price);
 
         details.price = Big(coinInfo.price);
       }
@@ -38,29 +37,29 @@ export default {
     return sum;
   },
 
-  overral24hChange: (state, getters) => getters.assetsDetails
-    .filter(asset => asset.value)
-    .map(asset => Big(asset.value).div(getters.totalValue).times(asset.change))
-    .reduce((p, c) => Big(p).plus(c), 0),
+  overral24hChange: (state, getters) =>
+    getters.assetsDetails
+      .filter(asset => asset.value)
+      .map(asset =>
+        Big(asset.value)
+          .div(getters.totalValue)
+          .times(asset.change)
+      )
+      .reduce((p, c) => Big(p).plus(c), 0),
 
   assetsDetailsDisplayed: (state, getters) =>
-    getters.assetsDetails.map((asset) => {
+    getters.assetsDetails.map(asset => {
       const assetDisplay = { ...asset };
       if (assetDisplay.amount) {
-        assetDisplay.amount = asset.amount
-          .round(4)
-          .toString();
+        assetDisplay.amount = asset.amount.round(4).toString();
       }
 
       if (asset.value) {
-        assetDisplay.value = asset.value
-          .toString();
+        assetDisplay.value = asset.value.toString();
       }
 
       if (asset.price) {
-        assetDisplay.price = asset.price
-          .round(4)
-          .toString();
+        assetDisplay.price = asset.price.round(4).toString();
       }
       return assetDisplay;
     }),
@@ -91,17 +90,17 @@ export default {
 
     let topGain;
     let mostLoss;
-    getters.assetsDetails
-      .filter(asset => asset && asset.value)
-      .forEach((asset) => {
-        const valueChange = Big(asset.value).times(asset.change).div(100);
-        if (valueChange.gt(0) && (!topGain || valueChange.gt(topGain.valueChange))) {
-          topGain = { ...asset, valueChange };
-        }
-        if (valueChange.lt(0) && (!mostLoss || valueChange.lt(mostLoss.valueChange))) {
-          mostLoss = { ...asset, valueChange };
-        }
-      });
+    getters.assetsDetails.filter(asset => asset && asset.value).forEach(asset => {
+      const valueChange = Big(asset.value)
+        .times(asset.change)
+        .div(100);
+      if (valueChange.gt(0) && (!topGain || valueChange.gt(topGain.valueChange))) {
+        topGain = { ...asset, valueChange };
+      }
+      if (valueChange.lt(0) && (!mostLoss || valueChange.lt(mostLoss.valueChange))) {
+        mostLoss = { ...asset, valueChange };
+      }
+    });
     if (topGain) {
       cards.push({
         ...topGain,

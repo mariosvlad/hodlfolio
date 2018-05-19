@@ -29,14 +29,19 @@ export default {
     },
     chartOptions() {
       let total = Big(0);
-      this.assets.forEach((asset) => {
+      this.assets.forEach(asset => {
         total = Big(asset.value || 0).plus(total);
       });
 
       if (total.lte(0)) return {};
       const data = this.assets.map(asset => ({
         name: asset.label,
-        y: parseFloat(Big(asset.value).div(total).times(100).toFixed(2)),
+        y: parseFloat(
+          Big(asset.value)
+            .div(total)
+            .times(100)
+            .toFixed(2)
+        ),
       }));
 
       Highcharts.setOptions({
@@ -74,11 +79,13 @@ export default {
             showInLegend: true,
           },
         },
-        series: [{
-          name: 'Coin percentage',
-          colorByPoint: true,
-          data,
-        }],
+        series: [
+          {
+            name: 'Coin percentage',
+            colorByPoint: true,
+            data,
+          },
+        ],
       };
     },
   },
@@ -86,8 +93,7 @@ export default {
 </script>
 
 
-<style>
-  .highcharts-container {
+<style lang="sass">
+  .highcharts-container
     width: 100% !important;
-  }
 </style>

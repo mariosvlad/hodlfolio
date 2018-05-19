@@ -5,6 +5,7 @@
           fixed
           v-model="drawer"
           app
+          :disable-resize-watcher="true"
         >
         <v-list>
           <v-list-tile to="/" exact>
@@ -49,16 +50,13 @@
 
 <script>
 /* eslint-disable */
-
 import './assets/fonts/index.css';
 import 'material-design-icons/iconfont/material-icons.css';
 import 'cryptocoins-icons/webfont/cryptocoins.css';
 import 'vuetify/dist/vuetify.min.css';
 
 import ShareUrl from './components/ShareUrl.vue';
-
 /* eslint-enable */
-
 
 export default {
   name: 'app',

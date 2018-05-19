@@ -18,13 +18,13 @@
 </template>
 
 <script>
-import CoinSelector from './CoinSelector.vue';
-import CoinTable from './CoinTable.vue';
-import AddCoin from './AddCoin.vue';
-import Highlights from './Highlights.vue';
+import CoinSelector from '../components/CoinSelector.vue';
+import CoinTable from '../components/CoinTable.vue';
+import AddCoin from '../components/AddCoin.vue';
+import Highlights from '../components/Highlights.vue';
 import store from '../store';
 
-const OverviewPieChart = () => import('./OverviewPieChart.vue');
+const OverviewPieChart = () => import('../components/OverviewPieChart.vue');
 
 export default {
   components: {
@@ -41,8 +41,7 @@ export default {
 };
 </script>
 
-<style scoped>
-.fabPadding {
+<style scoped lang="sass">
+.fabPadding
   padding-bottom: 36px
-}
 </style>

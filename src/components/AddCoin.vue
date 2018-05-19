@@ -74,8 +74,7 @@ export default {
 };
 </script>
 
-<style scoped>
-  .btn--small {
+<style scoped lang="sass">
+  .btn--small
     min-width: 60px
-  }
 </style>
