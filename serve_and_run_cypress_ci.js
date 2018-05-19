@@ -3,7 +3,7 @@
 const cypress = require('cypress');
 const { spawn } = require('child_process');
 
-const child = spawn('npm.cmd', ['run', 'dev']);
+const child = spawn('npm', ['run', 'dev']);
 
 child.on('error', err => process.exit(1));
 child.stderr.on('data', data => console.log(data.toString()));
@@ -14,7 +14,7 @@ child.stdout.on('data', data => {
   if (asString.includes('App running at')) {
     cypress
       .run({
-        record: true
+        record: true,
       })
       .then(results => {
         const errorCode = results.failures >= 1 ? 1 : 0;

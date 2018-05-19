@@ -18,7 +18,7 @@
     "test": "jest server/test --forceExit",
     "coverage": "jest server/test --forceExit --coverage",
     "cypress:open": "cypress open",
-    "cypress:run:ci": "node travis/serve_and_run_cypress_ci.js"
+    "cypress:run:ci": "node serve_and_run_cypress_ci.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -85,9 +85,5 @@
     "node": ">= 8.0.0 <9.0.0",
     "npm": ">= 3.0.0"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"]
 }
