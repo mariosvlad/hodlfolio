@@ -2,10 +2,11 @@ openssl aes-256-cbc -K $encrypted_a483cd4a3c1c_key -iv $encrypted_a483cd4a3c1c_i
 eval "$(ssh-agent -s)"
 chmod 600 .travis/travis.key
 ssh-add .travis/travis.key
-ssh-keyscan dokku.hodlfolio.org >> ~/.ssh/known_hosts
+ssh-keyscan dokku.hodlfolio.app >> ~/.ssh/known_hosts
 cp app.json dist/
 cp package.json dist/
+cp yarn.lock dist/
 cd dist && git init
 git add . && git commit -m "Deploy to dokku"
-git remote add deploy dokku@dokku.hodlfolio.org:hodlfolio
+git remote add deploy dokku@dokku.hodlfolio.app:hodlfolio
 git push deploy master --force

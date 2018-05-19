@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 const cypress = require('cypress');
 const { spawn } = require('child_process');
 
