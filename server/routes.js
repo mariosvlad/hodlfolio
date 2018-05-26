@@ -12,8 +12,13 @@ if (process.env.NODE_ENV === 'production') {
 }
 // index.html doesn't change during runtime, so reading it once at startup is enough
 const insertAfter = '</noscript>';
-const indexHtml = fs.readFileSync(path.join(staticFilesPath, 'index.html'), 'utf8');
-const htmlParts = indexHtml.split(insertAfter);
+let indexHtml = '';
+let htmlParts = [];
+try {
+  indexHtml = fs.readFileSync(path.join(staticFilesPath, 'index.html'), 'utf8');
+} catch (err) {
+  htmlParts = indexHtml.split(insertAfter);
+}
 
 // add the required data for the initial load (wallet assets, coins data) for faster page load
 router.get('/w/:id', async (ctx, next) => {
