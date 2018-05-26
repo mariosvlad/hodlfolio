@@ -3,17 +3,22 @@ import router from '../router';
 
 export default {
   async getWallet({ commit }, id) {
-    axios
-      .get(`/api/wallets/${id}`)
-      .then(data => {
-        commit('SETCURRENTWALLET', id);
-        commit('SETWALLET', data);
-      })
-      .catch(err => {
-        if (err.response && err.response.status === 404) {
-          router.replace('/');
-        }
-      });
+    if (window.initialWalletData) {
+      commit('SETCURRENTWALLET', id);
+      commit('SETWALLET', window.initialWalletData);
+    } else {
+      axios
+        .get(`/api/wallets/${id}`)
+        .then(response => {
+          commit('SETCURRENTWALLET', id);
+          commit('SETWALLET', response.data);
+        })
+        .catch(err => {
+          if (err.response && err.response.status === 404) {
+            router.replace('/');
+          }
+        });
+    }
   },
   async addCoin({ commit, state }, { coin, amount }) {
     const coinData = {
@@ -50,22 +55,24 @@ export default {
     });
   },
   async getCoinsOverview({ commit }) {
-    commit('SETCOINS', await axios.get('/api/data/coins'));
+    let data = window.initialCoinsData;
+    if (!data) {
+      data = (await axios.get('/api/data/coins')).data;
+    }
+    commit('SETCOINS', data);
   },
   async refreshData({ commit, state }) {
     const id = state.currentWallet;
     commit('SETCOINSLOADING', true);
-    axios
-      .get(`/api/wallets/${id}`)
-      .then(async data => {
-        commit('SETCOINS', await axios.get('/api/data/coins'));
-        commit('SETWALLET', data);
-        commit('SETCOINSLOADING', false);
-      })
-      .catch(err => {
-        if (err.response && err.response.status === 404) {
-          router.replace('/');
-        }
-      });
+    try {
+      const [walletData, coinsData] = await Promise.all([axios.get(`/api/wallets/${id}`), axios.get('/api/data/coins')]);
+      commit('SETCOINS', coinsData.data);
+      commit('SETWALLET', walletData.data);
+      commit('SETCOINSLOADING', false);
+    } catch (err) {
+      if (err.response && err.response.status === 404) {
+        router.replace('/');
+      }
+    }
   },
 };

@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb-base",
+  "extends": ["airbnb-base", "@vue/prettier"],
   "env": {
     "node": true,
     "jest": true

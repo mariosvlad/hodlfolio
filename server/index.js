@@ -10,7 +10,7 @@ import { Model } from 'objection';
 import path from 'path';
 import ratelimit from 'koa-ratelimit-lru';
 import knexConfig from './knexfile';
-import router from './api/';
+import ApiRouter from './api/';
 import { port } from './config';
 import errorHandler from './utils/errorHandler';
 
@@ -29,23 +29,25 @@ Model.knex(knex);
 const app = new Koa();
 
 app
-  .use(ratelimit({
-    duration: 60000,
-    rate: 250,
-    errorMessage: 'Slow down your requests',
-  }))
+  .use(
+    ratelimit({
+      duration: 60000,
+      rate: 250,
+      errorMessage: 'Slow down your requests',
+    })
+  )
   .use(logger())
   .use(compress())
   .use(bodyParser())
   .use(helmet())
   .use(errorHandler)
-  .use(router)
+  .use(ApiRouter)
   .use(serve(staticFilesPath))
-  .use(async (ctx) => {
+  .use(async ctx => {
     await send(ctx, 'index.html', { root: staticFilesPath });
   });
 
-const server = app.listen(port).on('error', (err) => {
+const server = app.listen(port).on('error', err => {
   console.error(err);
 });
 

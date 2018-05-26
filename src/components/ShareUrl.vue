@@ -49,7 +49,7 @@ export default {
   computed: {
     url() {
       const id = this.$store.state.currentWallet;
-      return `https://www.hodlfolio.org/w/${this.editable ? id : id.slice(0, 8)}`;
+      return `${window.location.host}/w/${this.editable ? id : id.slice(0, 8)}`;
     },
   },
   methods: {

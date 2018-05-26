@@ -1,8 +1,8 @@
 export default {
-  SETWALLET(state, { data }) {
-    state.assets = data.assets;
+  SETWALLET(state, wallet) {
+    state.assets = wallet.assets;
     state.fetchedWallet = true;
-    if (data.assets.length === 0) {
+    if (wallet.assets.length === 0) {
       state.showAddCoinDialog = true;
     }
   },
@@ -32,8 +32,8 @@ export default {
     state.currentWallet = walletId;
     localStorage.setItem('wallet', walletId);
   },
-  SETCOINS(state, { data }) {
-    data.forEach(coin => {
+  SETCOINS(state, coins) {
+    coins.forEach(coin => {
       state.coins.set(coin.coin, coin);
     });
     state.coinsSetTracker += 1;

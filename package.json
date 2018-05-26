@@ -50,20 +50,20 @@
     "uid-generator": "^1.0.0",
     "uniqid": "^4.1.1",
     "vue": "^2.5.16",
-    "vue-router": "^3.0.1",
     "vue-highcharts": "0.0.10",
-    "vuex": "^3.0.1",
+    "vue-router": "^3.0.1",
     "vuetify": "^1.0.6",
+    "vuex": "^3.0.1",
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-beta.10",
-    "@vue/cli-plugin-e2e-cypress": "^3.0.0-beta.10",
-    "@vue/cli-plugin-eslint": "^3.0.0-beta.10",
-    "@vue/cli-plugin-pwa": "^3.0.0-beta.10",
-    "@vue/cli-service": "^3.0.0-beta.10",
-    "@vue/eslint-config-prettier": "^3.0.0-beta.10",
-    "@vue/eslint-config-airbnb": "^3.0.0-beta.10",
+    "@vue/cli-plugin-babel": "3.0.0-beta.11",
+    "@vue/cli-plugin-e2e-cypress": "3.0.0-beta.11",
+    "@vue/cli-plugin-eslint": "3.0.0-beta.10",
+    "@vue/cli-plugin-pwa": "3.0.0-beta.11",
+    "@vue/cli-service": "3.0.0-beta.11",
+    "@vue/eslint-config-airbnb": "3.0.0-beta.11",
+    "@vue/eslint-config-prettier": "3.0.0-beta.11",
     "babel-cli": "^6.26.0",
     "babel-plugin-import": "^1.6.6",
     "babel-plugin-module-resolver": "^3.1.0",
@@ -74,7 +74,7 @@
     "cypress": "^2.1.0",
     "eslint-config-airbnb-base": "^12.0.0",
     "eslint-plugin-import": "~2.12.0",
-    "jest": "^22.4.4",
+    "jest": "^23.0.0",
     "node-sass": "^4.7.2",
     "nodemon": "^1.17.1",
     "npm-run-all": "^4.1.1",
@@ -86,6 +86,9 @@
     "node": ">= 8.0.0 <9.0.0",
     "npm": ">= 3.0.0",
     "yarn": "^1.6.0"
+  },
+  "jest": {
+    "testPathIgnorePatterns": ["/node_modules/", "/dist/"]
   },
   "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"]
 }
