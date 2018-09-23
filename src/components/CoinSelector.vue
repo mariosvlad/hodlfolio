@@ -1,12 +1,11 @@
 <template>
-  <v-select
+  <v-autocomplete
     label="Select cryptocurrency"
     :items="coins"
     v-model="coin"
     item-text="label"
     item-value="coin"
-    max-height="300"
-    autocomplete
+    :menu-props="{maxHeight:'300'}"
     required
   >
     <template slot="item" slot-scope="data">
@@ -17,7 +16,7 @@
         <i :class="['cc ' + data.item.coin]"></i>
       </v-list-tile-avatar>
     </template>
-  </v-select>
+  </v-autocomplete>
 </template>
 
 <script>

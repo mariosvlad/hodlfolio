@@ -5,7 +5,7 @@ ssh-add .travis/travis.key
 ssh-keyscan dokku.hodlfolio.app >> ~/.ssh/known_hosts
 cp app.json dist/
 cp package.json dist/
-cp yarn.lock dist/
+cp package-lock.json dist/
 cd dist && git init
 git add . && git commit -m "Deploy to dokku"
 git remote add deploy dokku@dokku.hodlfolio.app:hodlfolio

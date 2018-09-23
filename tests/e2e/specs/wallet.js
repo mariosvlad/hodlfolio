@@ -6,71 +6,67 @@ describe('Wallet', () => {
   });
 
   it('should create new wallet', () => {
-    cy.get('.btn--large').click();
+    cy.get('.v-btn--large').click();
   });
 
   it('should add 2 cryptocurrencies', () => {
-    cy
-      .get('.input-group--select__autocomplete')
+    cy.get('.v-select.v-autocomplete input')
       .as('select')
       .click()
       .type('Bitcoin');
 
-    cy.get('.menu__content--select .list__tile--highlighted').click();
+    cy.get('.v-list__tile--link')
+      .first()
+      .click();
 
-    cy
-      .get("input[aria-label='Amount']")
+    cy.get("input[aria-label='Amount']")
       .as('amountInput')
       .type('1.23');
 
-    cy
-      .get('.card__actions > button')
+    cy.get('.v-card__actions > button')
       .eq(1)
       .as('addButton')
       .click();
 
-    cy
-      .get('@select')
+    cy.get('@select')
       .click()
       .clear()
       .type('Lisk');
 
-    cy.get('.menu__content--select .list__tile--highlighted').click();
+    cy.get('.v-autocomplete__content .v-list__tile--link')
+      .first()
+      .click();
 
-    cy
-      .get('@amountInput')
+    cy.get('@amountInput')
       .clear()
       .type('27.38');
 
-    cy
-      .get('.card__actions > button')
+    cy.get('.v-card__actions > button')
       .eq(2)
       .click();
   });
 
   it('should add bitcoin again', () => {
-    cy
-      .get('.btn.btn--bottom.btn--floating')
+    cy.get('.v-btn.v-btn--bottom.v-btn--floating')
       .as('addAssetButton')
       .click();
 
-    cy
-      .get('.card__text .input-group--select__autocomplete')
+    cy.get('.v-select.v-autocomplete input')
       .as('select')
       .click()
       .clear()
       .type('Bitcoin');
 
-    cy.get('.menu__content--select .list__tile--highlighted').click();
+    cy.get('.v-autocomplete__content .v-list__tile--link')
+      .first()
+      .click();
 
-    cy
-      .get("input[aria-label='Amount']")
+    cy.get("input[aria-label='Amount']")
       .as('amountInput')
       .clear()
       .type('1');
 
-    cy
-      .get('.card__actions > button')
+    cy.get('.v-card__actions > button')
       .eq(2)
       .click();
   });

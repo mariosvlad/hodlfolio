@@ -1,17 +1,16 @@
 language: node_js
 node_js:
-  - '8'
-cache: yarn
+  - '10'
 
 addons:
-  postgresql: "9.6"
+  postgresql: '9.6'
 
 services:
   - postgres
 
-before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.6.0
-  - export PATH="$HOME/.yarn/bin:$PATH"
+install:
+  - npm i -g npm@6.4.1
+  - npm ci
 
 before_script:
   - PGPASSWORD=postgres psql -c 'create database hodlfolio;' -U postgres

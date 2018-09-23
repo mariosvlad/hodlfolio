@@ -10,7 +10,7 @@ import { Model } from 'objection';
 import path from 'path';
 import ratelimit from 'koa-ratelimit-lru';
 import knexConfig from './knexfile';
-import ApiRouter from './api/';
+import ApiRouter from './api';
 import { port } from './config';
 import errorHandler from './utils/errorHandler';
 
@@ -41,7 +41,7 @@ app
   .use(bodyParser())
   .use(helmet())
   .use(errorHandler)
-  .use(ApiRouter)
+  .use(ApiRouter())
   .use(serve(staticFilesPath))
   .use(async ctx => {
     await send(ctx, 'index.html', { root: staticFilesPath });
