@@ -2,15 +2,15 @@ language: node_js
 node_js:
   - '10'
 
+cache:
+  directories:
+    - '$HOME/.npm'
+
 addons:
   postgresql: '9.6'
 
 services:
   - postgres
-
-install:
-  - npm i -g npm@6.4.1
-  - npm ci
 
 before_script:
   - PGPASSWORD=postgres psql -c 'create database hodlfolio;' -U postgres
