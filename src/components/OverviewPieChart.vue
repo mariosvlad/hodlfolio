@@ -37,7 +37,7 @@ export default {
       const data = this.assets.map(asset => ({
         name: asset.label,
         y: parseFloat(
-          Big(asset.value)
+          Big(asset.value || 0)
             .div(total)
             .times(100)
             .toFixed(2)

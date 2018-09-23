@@ -55,7 +55,7 @@ export default {
       }
 
       if (asset.value) {
-        assetDisplay.value = asset.value.toString();
+        assetDisplay.value = asset.value.round(4).toString();
       }
 
       if (asset.price) {

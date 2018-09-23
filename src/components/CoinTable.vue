@@ -101,9 +101,9 @@ export default {
       },
       headers: [
         { text: 'Coin', value: 'label', align: 'left' },
-        { text: 'Total Value($)', value: 'value', align: 'right' },
+        { text: 'Total Value ($)', value: 'value', align: 'right' },
         { text: 'Price ($)', value: 'price', align: 'right' },
-        { text: '24hr Change(%)', value: 'change', align: 'right' },
+        { text: '24hr Change (%)', value: 'change', align: 'right' },
         { text: 'Amount', value: 'amount', align: 'right' },
       ],
     };
