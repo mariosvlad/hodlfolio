@@ -6,21 +6,24 @@ const historyCache = LRU({
   max: 3000,
   maxAge: 1000 * 60 * 60,
 });
-const APIURL = 'https://www.coincap.io';
+const APIURL = 'http://www.coincap.io';
 
 const intervalCache = new Cache()
-  .every('allCoins', 1000 * 60 * 10, async () => {
-    const { data } = await axios.get(`${APIURL}/front`);
-    const allCoinsData = data.map(coin => (
-      {
+  .every(
+    'allCoins',
+    1000 * 60 * 10,
+    async () => {
+      const { data } = await axios.get(`${APIURL}/front`);
+      const allCoinsData = data.map(coin => ({
         coin: coin.short,
         label: `${coin.long} (${coin.short})`,
         price: coin.price,
         change: coin.cap24hrChange,
-      }
-    ));
-    return JSON.stringify(allCoinsData);
-  }, 0)
+      }));
+      return JSON.stringify(allCoinsData);
+    },
+    0
+  )
   .start();
 
 export async function getAllCoins() {
