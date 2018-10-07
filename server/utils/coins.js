@@ -6,7 +6,7 @@ const historyCache = LRU({
   max: 3000,
   maxAge: 1000 * 60 * 60,
 });
-const APIURL = 'http://www.coincap.io';
+const APIURL = 'https://coincap.io';
 
 const intervalCache = new Cache()
   .every(
