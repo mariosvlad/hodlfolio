@@ -2,7 +2,7 @@ import LRU from 'lru-cache';
 import axios from 'axios';
 import Cache from 'interval-cache';
 
-const historyCache = LRU({
+const historyCache = new LRU({
   max: 3000,
   maxAge: 1000 * 60 * 60,
 });
