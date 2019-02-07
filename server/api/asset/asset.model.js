@@ -1,14 +1,9 @@
 import { Model } from 'objection';
 import path from 'path';
 import { omit } from 'lodash';
-import * as Big from 'big.js';
 
 module.exports = class Asset extends Model {
   static tableName = 'asset';
-
-  amount() {
-    return new Big(this.amount);
-  }
 
   static jsonSchema = {
     type: 'object',

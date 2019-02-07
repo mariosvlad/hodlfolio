@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-btn color="green" dark fab fixed bottom right @click="showAddCoinDialog = true">
-        <v-icon>add</v-icon>
+      <v-icon>add</v-icon>
     </v-btn>
     <v-dialog v-model="showAddCoinDialog" max-width="400px">
       <v-card>
@@ -11,13 +11,13 @@
           </v-card-title>
           <v-card-text>
             <coin-selector></coin-selector>
-              <v-text-field
-                label="Amount"
-                type="number"
-                v-model.number="amount"
-                :rules="[v => !!v || 'Amount is required']"
-                required
-              ></v-text-field>
+            <v-text-field
+              label="Amount"
+              type="number"
+              v-model.number="amount"
+              :rules="[v => !!v || 'Amount is required']"
+              required
+            ></v-text-field>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
@@ -75,6 +75,6 @@ export default {
 </script>
 
 <style scoped lang="sass">
-  .btn--small
-    min-width: 60px
+.btn--small
+  min-width: 60px
 </style>

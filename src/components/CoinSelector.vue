@@ -5,7 +5,7 @@
     v-model="coin"
     item-text="label"
     item-value="coin"
-    :menu-props="{maxHeight:'300'}"
+    :menu-props="{ maxHeight: '300' }"
     required
   >
     <template slot="item" slot-scope="data">
@@ -44,5 +44,4 @@ export default {
 i
   font-size: 15px;
   float: right;
-
 </style>

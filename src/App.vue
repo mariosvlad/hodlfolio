@@ -1,12 +1,7 @@
 <template>
   <div id="app">
     <v-app>
-      <v-navigation-drawer
-          fixed
-          v-model="drawer"
-          app
-          :disable-resize-watcher="true"
-        >
+      <v-navigation-drawer fixed v-model="drawer" app :disable-resize-watcher="true">
         <v-list>
           <v-list-tile to="/" exact>
             <v-list-tile-action>
@@ -16,7 +11,7 @@
               <v-list-tile-title>Home</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-list-tile v-if="mywallet && mywallet.length > 0" :to="'/w/'+mywallet">
+          <v-list-tile v-if="mywallet && mywallet.length > 0" :to="'/w/' + mywallet">
             <v-list-tile-action>
               <v-icon>account_balance</v-icon>
             </v-list-tile-action>
@@ -31,8 +26,11 @@
         <v-toolbar-title>Hodlfolio</v-toolbar-title>
         <v-spacer></v-spacer>
         <share-url v-if="$route.name === 'Wallet'"></share-url>
-        <v-btn v-if="$route.name === 'Wallet'" icon @click="refreshData()"
-            :loading="!$store.getters.fetchedData || $store.state.loadingCoinsData"
+        <v-btn
+          v-if="$route.name === 'Wallet'"
+          icon
+          @click="refreshData()"
+          :loading="!$store.getters.fetchedData || $store.state.loadingCoinsData"
         >
           <v-icon>refresh</v-icon>
         </v-btn>
@@ -41,8 +39,7 @@
         <router-view></router-view>
       </v-content>
       <v-footer class="pa-3" color="indigo">
-        <a class="white--text" href="https://github.com/mariosvlad/hodlfolio"
-            target="_blank" rel="noopener">Source Code</a>
+        <a class="white--text" href="https://github.com/mariosvlad/hodlfolio" target="_blank" rel="noopener">Source Code</a>
       </v-footer>
     </v-app>
   </div>

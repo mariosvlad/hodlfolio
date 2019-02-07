@@ -90,17 +90,19 @@ export default {
 
     let topGain;
     let mostLoss;
-    getters.assetsDetails.filter(asset => asset && asset.value).forEach(asset => {
-      const valueChange = Big(asset.value)
-        .times(asset.change)
-        .div(100);
-      if (valueChange.gt(0) && (!topGain || valueChange.gt(topGain.valueChange))) {
-        topGain = { ...asset, valueChange };
-      }
-      if (valueChange.lt(0) && (!mostLoss || valueChange.lt(mostLoss.valueChange))) {
-        mostLoss = { ...asset, valueChange };
-      }
-    });
+    getters.assetsDetails
+      .filter(asset => asset && asset.value)
+      .forEach(asset => {
+        const valueChange = Big(asset.value)
+          .times(asset.change)
+          .div(100);
+        if (valueChange.gt(0) && (!topGain || valueChange.gt(topGain.valueChange))) {
+          topGain = { ...asset, valueChange };
+        }
+        if (valueChange.lt(0) && (!mostLoss || valueChange.lt(mostLoss.valueChange))) {
+          mostLoss = { ...asset, valueChange };
+        }
+      });
     if (topGain) {
       cards.push({
         ...topGain,
