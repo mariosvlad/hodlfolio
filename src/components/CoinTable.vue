@@ -3,29 +3,23 @@
     <v-card-title class="title">
       Assets
       <v-spacer></v-spacer>
-      <v-text-field
-        append-icon="search"
-        label="Search"
-        single-line
-        v-model="search"
-      ></v-text-field>
+      <v-text-field append-icon="search" label="Search" single-line v-model="search"></v-text-field>
     </v-card-title>
     <v-data-table
-        :headers="headers"
-        :items="assets"
-        :search="search"
-        :pagination.sync="pagination"
-        no-data-text="No assets added"
-      >
+      :headers="headers"
+      :items="assets"
+      :search="search"
+      :pagination.sync="pagination"
+      no-data-text="No assets added"
+    >
       <template slot="items" slot-scope="props">
         <td class="text-xs-left">{{ props.item.label }}</td>
         <td class="text-xs-right">{{ props.item.value }}</td>
         <td class="text-xs-right">{{ props.item.price }}</td>
         <td class="text-xs-right">{{ props.item.change }}</td>
         <td class="text-xs-right">
-          <v-edit-dialog v-if="!isReadOnly"
-            lazy
-          > {{ props.item.amount }}
+          <v-edit-dialog v-if="!isReadOnly" lazy>
+            {{ props.item.amount }}
             <v-text-field
               slot="input"
               label="Edit"
@@ -48,9 +42,10 @@
           </v-flex>
         </td>
       </template>
-      <template slot="pageText" slot-scope="{ pageStart, pageStop }">
-        From {{ pageStart }} to {{ pageStop }}
-      </template>
+      <template
+        slot="pageText"
+        slot-scope="{ pageStart, pageStop }"
+      >From {{ pageStart }} to {{ pageStop }}</template>
       <template slot="footer">
         <td colspan="100%">
           <strong>Total value: ${{totalValue}}</strong>
@@ -59,7 +54,7 @@
     </v-data-table>
     <v-dialog v-model="coinHistoryDialog">
       <v-card>
-        <chart v-if="coinHistoryDialog" :coin='currentCoinHistory'></chart>
+        <chart v-if="coinHistoryDialog" :coin="currentCoinHistory"></chart>
       </v-card>
     </v-dialog>
   </v-card>
@@ -68,6 +63,7 @@
 <script>
 import Big from 'big.js';
 
+// eslint-disable-next-line
 const Chart = () => import('./HistoryChart.vue');
 
 export default {

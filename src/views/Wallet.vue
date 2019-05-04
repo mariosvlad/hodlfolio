@@ -24,6 +24,7 @@ import AddCoin from '../components/AddCoin.vue';
 import Highlights from '../components/Highlights.vue';
 import store from '../store';
 
+// eslint-disable-next-line
 const OverviewPieChart = () => import('../components/OverviewPieChart.vue');
 
 export default {
