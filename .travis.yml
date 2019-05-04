@@ -20,7 +20,7 @@ script:
   - npm test
   - npm run cypress:run:ci
 
-before_deploy: npm run build
+before_deploy: npm run build:ci
 
 deploy:
   provider: script

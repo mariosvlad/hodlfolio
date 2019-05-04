@@ -12,7 +12,7 @@
     "start:client": "vue-cli-service serve",
     "dev": "run-p start:client start:server",
     "clean": "rimraf dist",
-    "build": "npm-run-all clean build:client build:server",
+    "build:ci": "npm-run-all clean build:client build:server",
     "build:client": "vue-cli-service build",
     "build:server": "babel -d ./dist/server ./server",
     "migrate": "knex migrate:latest --cwd server",
