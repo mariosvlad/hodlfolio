@@ -4,6 +4,7 @@ chmod 600 .travis/travis.key
 ssh-add .travis/travis.key
 ssh-keyscan dokku.hodlfolio.app >> ~/.ssh/known_hosts
 cp app.json dist/
+cp CHECKS dist/
 cp package.json dist/
 cp package-lock.json dist/
 cd dist && git init
