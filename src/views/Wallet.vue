@@ -9,7 +9,7 @@
       </v-flex>
     </v-layout>
     <v-layout row>
-      <v-flex xs12 d-flex>
+      <v-flex xs12>
         <coin-table></coin-table>
       </v-flex>
     </v-layout>
