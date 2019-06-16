@@ -10,7 +10,8 @@ const intervalCache = new Cache()
     async () => {
       const { data } = await axios.get(`${APIURL}/assets?limit=1000`);
       const allCoinsData = data.data.map(coin => ({
-        coin: coin.id,
+        coin: coin.symbol,
+        id: coin.id,
         label: `${coin.name} (${coin.symbol})`,
         price: coin.priceUsd,
         change: coin.changePercent24Hr,

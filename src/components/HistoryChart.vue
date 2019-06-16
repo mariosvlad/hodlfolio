@@ -97,7 +97,7 @@ export default {
       }));
       return {
         title: {
-          text: `${this.coin} Price History`,
+          text: `${this.coin} price history`,
         },
         style: {
           fontFamily: 'Roboto',

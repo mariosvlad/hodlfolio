@@ -33,7 +33,7 @@
         </td>
         <td>
           <v-flex d-inline-flex>
-            <v-btn flat icon dark color="indigo" @click="openCoinHistory(props.item.coin)">
+            <v-btn flat icon dark color="indigo" @click="openCoinHistory(props.item.id)">
               <v-icon dark>timeline</v-icon>
             </v-btn>
             <v-btn v-if="!isReadOnly" flat icon color="red" @click="coinDelete(props.item.coin)">
