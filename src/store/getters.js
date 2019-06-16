@@ -10,8 +10,8 @@ export default {
 
       if (coinInfo) {
         details.value = Big(asset.amount).times(coinInfo.price);
+
         details.price = Big(coinInfo.price);
-        details.change = Big(coinInfo.change).round(2);
       }
 
       details.edit = false;

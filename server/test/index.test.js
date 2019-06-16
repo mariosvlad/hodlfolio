@@ -37,7 +37,7 @@ describe('routes: index', () => {
   });
 
   test('should get ethereum 180 days history', async () => {
-    const response = await request(server).get('/api/data/history/ethereum/180day');
+    const response = await request(server).get('/api/data/history/ETH/180day');
 
     expect(response.status).toEqual(200);
     expect(response.body).not.toHaveLength(0);

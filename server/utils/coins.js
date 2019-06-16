@@ -1,19 +1,24 @@
+import LRU from 'lru-cache';
 import axios from 'axios';
 import Cache from 'interval-cache';
 
-const APIURL = 'https://api.coincap.io/v2';
+const historyCache = new LRU({
+  max: 3000,
+  maxAge: 1000 * 60 * 60,
+});
+const APIURL = 'https://coincap.io';
 
 const intervalCache = new Cache()
   .every(
     'allCoins',
     1000 * 60 * 10,
     async () => {
-      const { data } = await axios.get(`${APIURL}/assets?limit=1000`);
-      const allCoinsData = data.data.map(coin => ({
-        coin: coin.id,
-        label: `${coin.name} (${coin.symbol})`,
-        price: coin.priceUsd,
-        change: coin.changePercent24Hr,
+      const { data } = await axios.get(`${APIURL}/front`);
+      const allCoinsData = data.map(coin => ({
+        coin: coin.short,
+        label: `${coin.long} (${coin.short})`,
+        price: coin.price,
+        change: coin.cap24hrChange,
       }));
       return JSON.stringify(allCoinsData);
     },
@@ -26,20 +31,11 @@ export async function getAllCoins() {
 }
 
 export async function getHistoricData(coin, timeframe) {
-  const days = Number(timeframe.split('day')[0]);
-  let interval = 'd1';
-  if (days <= 7) {
-    interval = 'h1';
-  } else if (days <= 90) {
-    interval = 'h12';
-  }
+  const key = `${coin}:${timeframe}`;
+  const dataPoints = historyCache.get(key);
+  if (dataPoints) return dataPoints;
 
-  // 1 day = 1000 * 60 * 60 * 24
-  const start = Date.now() - 86400000 * days;
-
-  const { data } = await axios.get(`${APIURL}/assets/${coin}/history?interval=${interval}&start=${start}&end=${Date.now()}`);
-  const result = data.data.map(coinData => {
-    return [coinData.time, Number(coinData.priceUsd)];
-  });
-  return result;
+  const { data } = await axios.get(`${APIURL}/history/${timeframe}/${coin}`);
+  historyCache.set(key, data.price);
+  return data.price;
 }
