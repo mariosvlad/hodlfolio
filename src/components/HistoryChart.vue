@@ -109,6 +109,9 @@ export default {
             data: this.chartData,
           },
         ],
+        tooltip: {
+          valueDecimals: 4,
+        },
         rangeSelector: {
           buttons,
           inputEnabled: false,
