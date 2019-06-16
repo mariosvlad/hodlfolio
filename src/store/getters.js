@@ -11,6 +11,9 @@ export default {
       if (coinInfo) {
         details.value = Big(asset.amount).times(coinInfo.price);
         details.price = Big(coinInfo.price);
+      }
+
+      if (coinInfo.change) {
         details.change = Big(coinInfo.change).round(2);
       }
 
@@ -39,7 +42,7 @@ export default {
 
   overral24hChange: (state, getters) =>
     getters.assetsDetails
-      .filter(asset => asset.value)
+      .filter(asset => asset.value && asset.change != null)
       .map(asset =>
         Big(asset.value)
           .div(getters.totalValue)
@@ -91,7 +94,7 @@ export default {
     let topGain;
     let mostLoss;
     getters.assetsDetails
-      .filter(asset => asset && asset.value)
+      .filter(asset => asset && asset.value && asset.change != null)
       .forEach(asset => {
         const valueChange = Big(asset.value)
           .times(asset.change)
