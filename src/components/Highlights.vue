@@ -7,7 +7,7 @@
             <v-flex xs4>
               <v-layout column>
                 <v-flex d-flex align-content-center>
-                  <v-icon x-large dark>{{ card.icon }}</v-icon>
+                  <v-icon x-large>{{ card.icon }}</v-icon>
                 </v-flex>
                 <v-flex column justify-space-around align-content-space-around>
                   <v-flex class="pa-0">

@@ -8,9 +8,12 @@
 import Highcharts from 'highcharts';
 import VueHighcharts from 'vue-highcharts';
 import loadStock from 'highcharts/modules/stock';
+import darkUnica from 'highcharts/themes/dark-unica';
+
 import Vue from 'vue';
 import Big from 'big.js';
 
+darkUnica(Highcharts);
 loadStock(Highcharts);
 Vue.use(VueHighcharts, { Highcharts });
 
@@ -59,6 +62,7 @@ export default {
         credits: false,
         chart: {
           plotBackgroundColor: null,
+          backgroundColor: '#424242',
           plotBorderWidth: null,
           plotShadow: false,
           type: 'pie',

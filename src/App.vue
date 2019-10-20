@@ -3,26 +3,26 @@
     <v-app>
       <v-navigation-drawer fixed v-model="drawer" app :disable-resize-watcher="true">
         <v-list>
-          <v-list-tile to="/" exact>
-            <v-list-tile-action>
+          <v-list-item to="/" exact>
+            <v-list-item-action>
               <v-icon>home</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>Home</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-          <v-list-tile v-if="mywallet && mywallet.length > 0" :to="'/w/' + mywallet">
-            <v-list-tile-action>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Home</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item v-if="mywallet && mywallet.length > 0" :to="'/w/' + mywallet">
+            <v-list-item-action>
               <v-icon>account_balance</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>Wallet</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Wallet</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-toolbar color="indigo" dark fixed app>
-        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-app-bar color="indigo" fixed app>
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-toolbar-title>Hodlfolio</v-toolbar-title>
         <v-spacer></v-spacer>
         <share-url v-if="$route.name === 'Wallet'"></share-url>
@@ -34,7 +34,7 @@
         >
           <v-icon>refresh</v-icon>
         </v-btn>
-      </v-toolbar>
+      </v-app-bar>
       <v-content>
         <router-view></router-view>
       </v-content>

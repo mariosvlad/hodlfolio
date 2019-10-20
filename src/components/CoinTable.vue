@@ -1,54 +1,39 @@
 <template>
-  <v-card v-if="$store.getters.fetchedData && assets.length!==0">
+  <v-card v-if="$store.getters.fetchedData && assets.length !== 0">
     <v-card-title class="title">
       Assets
       <v-spacer></v-spacer>
       <v-text-field append-icon="search" label="Search" single-line v-model="search"></v-text-field>
     </v-card-title>
-    <v-data-table
-      :headers="headers"
-      :items="assets"
-      :search="search"
-      :pagination.sync="pagination"
-      no-data-text="No assets added"
-    >
-      <template slot="items" slot-scope="props">
-        <td class="text-xs-left">{{ props.item.label }}</td>
-        <td class="text-xs-right">{{ props.item.value }}</td>
-        <td class="text-xs-right">{{ props.item.price }}</td>
-        <td class="text-xs-right">{{ props.item.change }}</td>
-        <td class="text-xs-right">
-          <v-edit-dialog v-if="!isReadOnly" lazy>
-            {{ props.item.amount }}
-            <v-text-field
-              slot="input"
-              label="Edit"
-              v-model="props.item.amount"
-              single-line
-              type="number"
-              @change="coinSave(props.item)"
-            ></v-text-field>
-          </v-edit-dialog>
-          <div v-else>{{props.item.amount}}</div>
-        </td>
-        <td>
-          <v-flex d-inline-flex>
-            <v-btn flat icon dark color="indigo" @click="openCoinHistory(props.item.id)">
-              <v-icon dark>timeline</v-icon>
-            </v-btn>
-            <v-btn v-if="!isReadOnly" flat icon color="red" @click="coinDelete(props.item.coin)">
-              <v-icon>delete</v-icon>
-            </v-btn>
-          </v-flex>
-        </td>
+    <v-data-table :headers="headers" :items="assets" :search="search" no-data-text="No assets added" dense>
+      <template v-slot:item.amount="{ item }">
+        <v-edit-dialog v-if="!isReadOnly" lazy>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <span v-on="on">{{ item.amount }}</span>
+            </template>
+            <span>Click to edit</span>
+          </v-tooltip>
+          <v-text-field slot="input" label="Edit" v-model="item.amount" single-line type="number" @change="coinSave(item)"></v-text-field>
+        </v-edit-dialog>
+        <div v-else>{{ item.amount }}</div>
       </template>
-      <template
-        slot="pageText"
-        slot-scope="{ pageStart, pageStop }"
-      >From {{ pageStart }} to {{ pageStop }}</template>
+      <template v-slot:item.action="{ item }">
+        <v-flex d-inline-flex>
+          <v-btn text icon color="indigo accent-1" @click="openCoinHistory(item.id)">
+            <v-icon>timeline</v-icon>
+          </v-btn>
+          <v-btn v-if="!isReadOnly" text icon color="red" @click="coinDelete(item.coin)">
+            <v-icon>delete</v-icon>
+          </v-btn>
+        </v-flex>
+      </template>
+      <template slot="pageText" slot-scope="{ pageStart, pageStop }">
+        From {{ pageStart }} to {{ pageStop }}
+      </template>
       <template slot="footer">
         <td colspan="100%">
-          <strong>Total value: ${{totalValue}}</strong>
+          <strong>Total value: ${{ totalValue }}</strong>
         </td>
       </template>
     </v-data-table>
@@ -101,6 +86,7 @@ export default {
         { text: 'Price ($)', value: 'price', align: 'right' },
         { text: '24hr Change (%)', value: 'change', align: 'right' },
         { text: 'Amount', value: 'amount', align: 'right' },
+        { text: '', value: 'action', sortable: false },
       ],
     };
   },

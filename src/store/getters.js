@@ -64,6 +64,10 @@ export default {
       if (asset.price) {
         assetDisplay.price = asset.price.round(4).toString();
       }
+
+      if (asset.change) {
+        assetDisplay.change = asset.change.round(2).toString();
+      }
       return assetDisplay;
     }),
 

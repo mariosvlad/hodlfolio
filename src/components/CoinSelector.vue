@@ -9,12 +9,12 @@
     required
   >
     <template slot="item" slot-scope="data">
-      <v-list-tile-content>
-        <v-list-tile-title v-text="data.item.label"></v-list-tile-title>
-      </v-list-tile-content>
-      <v-list-tile-avatar>
+      <v-list-item-content>
+        <v-list-item-title v-text="data.item.label"></v-list-item-title>
+      </v-list-item-content>
+      <v-list-item-avatar>
         <i :class="['cc ' + data.item.coin]"></i>
-      </v-list-tile-avatar>
+      </v-list-item-avatar>
     </template>
   </v-autocomplete>
 </template>

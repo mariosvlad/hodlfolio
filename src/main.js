@@ -12,7 +12,17 @@ Vue.config.productionTip = false;
 
 Vue.use(Vuetify);
 
+const VuetifyOpts = {
+  icons: {
+    iconfont: 'mdiSvg',
+  },
+  theme: {
+    dark: true,
+  },
+};
+
 new Vue({
+  vuetify: new Vuetify(VuetifyOpts),
   router,
   store,
   render: h => h(App),
