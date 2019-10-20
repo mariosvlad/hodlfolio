@@ -6,13 +6,17 @@ describe('Homepage', () => {
   });
 
   it('assert that only new wallet button exists', () => {
-    cy.get('.v-btn--large').should('have.length', 1);
+    cy.get('button')
+      .contains('Create new wallet')
+      .should('have.length', 1);
 
-    cy.get('.v-btn--large.primary').should('not.exist');
+    cy.get('button.primary').should('not.exist');
   });
 
   it('should create new wallet', () => {
-    cy.get('.v-btn--large').click();
+    cy.get('button')
+      .contains('Create new wallet')
+      .click();
   });
 
   it('should add 2 cryptocurrencies', () => {
@@ -21,11 +25,11 @@ describe('Homepage', () => {
       .click()
       .type('Bitcoin');
 
-    cy.get('.v-list__tile--link')
+    cy.get('.v-list-item__title')
       .first()
       .click();
 
-    cy.get("input[aria-label='Amount']")
+    cy.get("input[type='number']")
       .as('amountInput')
       .type('0.23');
 
@@ -39,7 +43,7 @@ describe('Homepage', () => {
       .clear()
       .type('Lisk');
 
-    cy.get('.v-autocomplete__content .v-list__tile--link')
+    cy.get('.v-autocomplete__content .v-list-item__title')
       .first()
       .click();
 
@@ -51,20 +55,19 @@ describe('Homepage', () => {
   });
 
   it('Switch to home and back again', () => {
-    cy.get('.v-toolbar__side-icon')
+    cy.get('.v-app-bar__nav-icon')
       .as('sideButton')
       .click();
 
-    cy.get('.v-navigation-drawer > .v-list > div')
+    cy.get('.v-navigation-drawer .v-list > a')
       .should('have.length', 2)
       .eq(0)
       .click();
   });
 
   it('assert that "Go to my wallet" button exists', () => {
-    cy.get('.v-btn--large').should('have.length', 2);
-
-    cy.get('.v-btn--large.primary')
+    cy.get('button.primary')
+      .contains('my wallet')
       .should('exist')
       .click();
   });

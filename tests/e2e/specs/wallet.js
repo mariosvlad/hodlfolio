@@ -6,7 +6,9 @@ describe('Wallet', () => {
   });
 
   it('should create new wallet', () => {
-    cy.get('.v-btn--large').click();
+    cy.get('button')
+      .contains('Create new wallet')
+      .click();
   });
 
   it('should add 2 cryptocurrencies', () => {
@@ -15,11 +17,11 @@ describe('Wallet', () => {
       .click()
       .type('Bitcoin');
 
-    cy.get('.v-list__tile--link')
+    cy.get('.v-list-item__title')
       .first()
       .click();
 
-    cy.get("input[aria-label='Amount']")
+    cy.get("input[type='number']")
       .as('amountInput')
       .type('1.23');
 
@@ -33,7 +35,7 @@ describe('Wallet', () => {
       .clear()
       .type('Lisk');
 
-    cy.get('.v-autocomplete__content .v-list__tile--link')
+    cy.get('.v-autocomplete__content .v-list-item__title')
       .first()
       .click();
 
@@ -47,7 +49,7 @@ describe('Wallet', () => {
   });
 
   it('should add bitcoin again', () => {
-    cy.get('.v-btn.v-btn--bottom.v-btn--floating')
+    cy.get('button.v-btn--fab')
       .as('addAssetButton')
       .click();
 
@@ -57,11 +59,11 @@ describe('Wallet', () => {
       .clear()
       .type('Bitcoin');
 
-    cy.get('.v-autocomplete__content .v-list__tile--link')
+    cy.get('.v-autocomplete__content .v-list-item__title')
       .first()
       .click();
 
-    cy.get("input[aria-label='Amount']")
+    cy.get("input[type='number']")
       .as('amountInput')
       .clear()
       .type('1');
