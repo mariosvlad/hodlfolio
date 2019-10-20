@@ -3,7 +3,10 @@ const { spawn } = require('child_process');
 
 const child = spawn('npm', ['run', 'dev']);
 
-child.on('error', err => process.exit(1));
+child.on('error', err => {
+  console.log(err);
+  process.exit(1);
+});
 child.stderr.on('data', data => console.log(data.toString()));
 child.on('exit', code => console.log(`Child exitting with code ${code}`));
 
