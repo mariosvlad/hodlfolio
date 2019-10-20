@@ -43,7 +43,10 @@ export default {
       return this.$store.getters.highlights.map(highlight => {
         const card = { ...highlight };
         if (card.valueChange) {
+          const isPositive = card.valueChange.gte(0);
           card.valueChange = Number(card.valueChange.round(1)).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+          card.valueChange = `${isPositive ? '+' : ''}${card.valueChange}`;
+          card.change = `${isPositive ? '+' : ''}${card.change}`;
         }
         return card;
       });
