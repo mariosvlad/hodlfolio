@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import { getAllCoins } from 'utils/coins';
-import Router from 'koa-router';
+import Router from '@koa/router';
 import Wallet from './api/wallet/wallet.model';
 
 const router = new Router();

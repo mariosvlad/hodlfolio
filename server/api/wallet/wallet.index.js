@@ -1,4 +1,4 @@
-import Router from 'koa-router';
+import Router from '@koa/router';
 import { add, get, setLastSeen } from './wallet.controller';
 
 const routeName = 'wallets';

@@ -28,9 +28,7 @@
           </v-btn>
         </v-flex>
       </template>
-      <template slot="pageText" slot-scope="{ pageStart, pageStop }">
-        From {{ pageStart }} to {{ pageStop }}
-      </template>
+      <template slot="pageText" slot-scope="{ pageStart, pageStop }"> From {{ pageStart }} to {{ pageStop }} </template>
       <template slot="footer">
         <td colspan="100%">
           <strong>Total value: ${{ totalValue }}</strong>

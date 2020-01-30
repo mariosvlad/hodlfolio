@@ -1,4 +1,4 @@
-import Router from 'koa-router';
+import Router from '@koa/router';
 import { add, update, remove } from './asset.controller';
 
 const routeName = 'assets';

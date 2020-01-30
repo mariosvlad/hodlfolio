@@ -1,4 +1,4 @@
-import Router from 'koa-router';
+import Router from '@koa/router';
 import { coinsOverview, history } from './data.controller';
 
 const routeName = 'data';
