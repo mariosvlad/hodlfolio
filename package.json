@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@koa/router": "^8.0.6",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "big.js": "^5.2.2",
     "chart.js": "^2.9.3",
     "cryptocoins-icons": "^2.9.0",
