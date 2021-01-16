@@ -30,11 +30,11 @@ router.get('/w/:id', async (ctx, next) => {
     if (id.length > 8) {
       dbResult = await Wallet.query()
         .where('id', id)
-        .eager('assets');
+        .withGraphFetched('assets');
     } else {
       dbResult = await Wallet.query()
         .where('readonlyId', id)
-        .eager('assets')
+        .withGraphFetched('assets')
         .omit(['id']);
     }
     if (dbResult.length === 0) {

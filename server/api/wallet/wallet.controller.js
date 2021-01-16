@@ -21,11 +21,11 @@ export async function get(ctx) {
     if (id.length > 8) {
       dbResult = await Wallet.query()
         .where('id', id)
-        .eager('assets');
+        .withGraphFetched('assets');
     } else {
       dbResult = await Wallet.query()
         .where('readonlyId', id)
-        .eager('assets')
+        .withGraphFetched('assets')
         .omit(['id']);
     }
 

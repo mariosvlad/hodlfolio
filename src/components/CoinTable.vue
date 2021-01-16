@@ -30,7 +30,7 @@
       </template>
       <template slot="pageText" slot-scope="{ pageStart, pageStop }"> From {{ pageStart }} to {{ pageStop }} </template>
       <template slot="footer">
-        <td colspan="100%">
+        <td colspan="100%" class="pl-4">
           <strong>Total value: ${{ totalValue }}</strong>
         </td>
       </template>

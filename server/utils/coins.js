@@ -6,7 +6,7 @@ const APIURL = 'https://api.coincap.io/v2';
 const intervalCache = new Cache()
   .every(
     'allCoins',
-    1000 * 60 * 10,
+    1000 * 60 * 5,
     async () => {
       const { data } = await axios.get(`${APIURL}/assets?limit=2000`);
       const allCoinsData = data.data.map(coin => ({
