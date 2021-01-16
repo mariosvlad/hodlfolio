@@ -21,11 +21,12 @@ describe('Homepage', () => {
 
   it('should add 2 cryptocurrencies', () => {
     cy.get('.v-select.v-autocomplete input')
+      .first()
       .as('select')
       .click()
       .type('Bitcoin');
 
-    cy.get('.v-list-item__title')
+    cy.get('.v-select-list .v-list-item__title')
       .first()
       .click();
 
