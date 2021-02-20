@@ -7,7 +7,7 @@ describe('Wallet', () => {
 
   it('should create new wallet', () => {
     cy.get('button')
-      .contains('Create new wallet')
+      .contains('New collection')
       .click();
   });
 

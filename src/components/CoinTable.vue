@@ -5,7 +5,7 @@
       <v-spacer></v-spacer>
       <v-text-field append-icon="search" label="Search" single-line v-model="search"></v-text-field>
     </v-card-title>
-    <v-data-table :headers="headers" :items="assets" :search="search" no-data-text="No assets added" dense>
+    <v-data-table :headers="headers" :items="assets" :options="options" :search="search" no-data-text="No assets added" dense>
       <template v-slot:item.amount="{ item }">
         <v-edit-dialog v-if="!isReadOnly" lazy>
           <v-tooltip bottom>
@@ -30,7 +30,7 @@
       </template>
       <template slot="pageText" slot-scope="{ pageStart, pageStop }"> From {{ pageStart }} to {{ pageStop }} </template>
       <template slot="footer">
-        <td colspan="100%" class="pl-4">
+        <td colspan="100%" class="pl-4 pt-2">
           <strong>Total value: ${{ totalValue }}</strong>
         </td>
       </template>
@@ -74,14 +74,14 @@ export default {
       search: '',
       coinHistoryDialog: null,
       currentCoinHistory: null,
-      pagination: {
-        sortBy: 'value',
-        descending: true,
+      options: {
+        sortBy: ['value'],
+        sortDesc: ['desc'],
       },
       headers: [
-        { text: 'Coin', value: 'label', align: 'left' },
+        { text: 'Name', value: 'label', align: 'left' },
         { text: 'Total Value ($)', value: 'value', align: 'right' },
-        { text: 'Price ($)', value: 'price', align: 'right' },
+        { text: 'Price per ($)', value: 'price', align: 'right' },
         { text: '24hr Change (%)', value: 'change', align: 'right' },
         { text: 'Amount', value: 'amount', align: 'right' },
         { text: '', value: 'action', sortable: false },

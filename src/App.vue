@@ -16,7 +16,7 @@
               <v-icon>account_balance</v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>Wallet</v-list-item-title>
+              <v-list-item-title>Collection</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -35,9 +35,9 @@
           <v-icon>refresh</v-icon>
         </v-btn>
       </v-app-bar>
-      <v-content>
+      <v-main>
         <router-view></router-view>
-      </v-content>
+      </v-main>
       <v-footer class="pa-3" color="indigo">
         <a class="white--text" href="https://github.com/mariosvlad/hodlfolio" target="_blank" rel="noopener">Source Code</a>
       </v-footer>

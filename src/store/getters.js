@@ -15,6 +15,8 @@ export default {
         if (coinInfo.change) {
           details.change = Big(coinInfo.change).round(2);
         }
+      } else {
+        details.label = asset.coin;
       }
 
       details.edit = false;
