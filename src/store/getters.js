@@ -42,7 +42,7 @@ export default {
     return sum;
   },
 
-  overral24hChange: (state, getters) =>
+  overall24hChange: (state, getters) =>
     getters.assetsDetails
       .filter(asset => asset.value && asset.change != null)
       .map(asset =>
@@ -78,33 +78,38 @@ export default {
     if (!getters.fetchedData || state.assets.length === 0) return cards;
 
     const totalValue = Big(getters.totalValue);
-    const overralChange = getters.overral24hChange;
-    const overral = {
+    const overallChange = getters.overall24hChange;
+    const overall = {
       label: `Total: $${totalValue.round(0).toString()}`,
       description: 'change last 24h',
-      valueChange: overralChange.times(totalValue).div(100),
-      change: overralChange.round(3).toString(),
+      valueChange: overallChange.times(totalValue).div(100),
+      change: overallChange.round(3).toString(),
       icon: 'trending_flat',
       color: 'blue-grey',
     };
-    if (overralChange.gte(1)) {
-      overral.icon = 'trending_up';
-      overral.color = 'green';
+    if (overallChange.gte(1)) {
+      overall.icon = 'trending_up';
+      overall.color = 'green';
     }
-    if (overralChange.lte(-1)) {
-      overral.icon = 'trending_down';
-      overral.color = 'red';
+    if (overallChange.lte(-1)) {
+      overall.icon = 'trending_down';
+      overall.color = 'red';
     }
-    cards.push(overral);
+    cards.push(overall);
 
     let topGain;
     let mostLoss;
     getters.assetsDetails
       .filter(asset => asset && asset.value && asset.change != null)
       .forEach(asset => {
-        const valueChange = Big(asset.value)
-          .times(asset.change)
-          .div(100);
+        const previousValue = Big(asset.value).div(
+          Big(asset.change)
+            .add(100)
+            .div(100)
+        );
+
+        const valueChange = Big(asset.value).minus(previousValue);
+
         if (valueChange.gt(0) && (!topGain || valueChange.gt(topGain.valueChange))) {
           topGain = { ...asset, valueChange };
         }
