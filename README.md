@@ -8,7 +8,7 @@
 
 - Fast, simple UI
 - No account required, just the URL is enough
-- Simple sharing, short URL is read-only, full URL only has edit permission
+- Simple sharing, short URL is read-only, full URL has edit permission
 
 **Demo** (read-only) : [hodlfolio.app/w/ITYkwlQX](https://www.hodlfolio.app/w/ITYkwlQX)
 
