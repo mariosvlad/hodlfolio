@@ -7,7 +7,7 @@ describe('Homepage', () => {
 
   it('assert that only new wallet button exists', () => {
     cy.get('button')
-      .contains('New collection')
+      .contains('New list')
       .should('have.length', 1);
 
     cy.get('button.primary').should('not.exist');
@@ -15,7 +15,7 @@ describe('Homepage', () => {
 
   it('should create new wallet', () => {
     cy.get('button')
-      .contains('New collection')
+      .contains('New list')
       .click();
   });
 
@@ -66,9 +66,9 @@ describe('Homepage', () => {
       .click();
   });
 
-  it('assert that "Go to my wallet" button exists', () => {
+  it('assert that "my list" button exists', () => {
     cy.get('button.primary')
-      .contains('my collection')
+      .contains('My list')
       .should('exist')
       .click();
   });
