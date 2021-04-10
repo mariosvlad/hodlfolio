@@ -5,7 +5,7 @@ const uidgen = new UIDGenerator(256, UIDGenerator.BASE62);
 
 export async function add(ctx) {
   const id = await uidgen.generate();
-  const readonlyId = id.slice(0, 9);
+  const readonlyId = id.slice(0, 8);
   try {
     await Wallet.query().insert({ id, readonlyId });
     ctx.body = { id };
@@ -25,8 +25,9 @@ export async function get(ctx) {
     } else {
       dbResult = await Wallet.query()
         .where('readonlyId', id)
-        .withGraphFetched('assets')
-        .omit(['id']);
+        .withGraphFetched('assets');
+
+      delete dbResult.id;
     }
 
     if (dbResult.length === 0) {
