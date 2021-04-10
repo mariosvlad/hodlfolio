@@ -42,6 +42,6 @@ export default {
   float: left
 
 i
-  font-size: 15px;
-  float: right;
+  font-size: 15px
+  float: right
 </style>

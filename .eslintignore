@@ -1,1 +1,4 @@
 serve_and_run_cypress_ci.js
+prettier.config.js
+vue.config.js
+tests/e2e/plugins/index.js

@@ -16,7 +16,7 @@
               <v-icon>account_balance</v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>Collection</v-list-item-title>
+              <v-list-item-title>Assets</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -48,9 +48,7 @@
 <script>
 /* eslint-disable */
 import './assets/fonts/index.css';
-import 'material-design-icons/iconfont/material-icons.css';
 import 'cryptocoins-icons/webfont/cryptocoins.css';
-import 'vuetify/dist/vuetify.min.css';
 
 import ShareUrl from './components/ShareUrl.vue';
 /* eslint-enable */

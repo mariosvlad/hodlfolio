@@ -34,8 +34,9 @@ router.get('/w/:id', async (ctx, next) => {
     } else {
       dbResult = await Wallet.query()
         .where('readonlyId', id)
-        .withGraphFetched('assets')
-        .omit(['id']);
+        .withGraphFetched('assets');
+
+      delete dbResult.id;
     }
     if (dbResult.length === 0) {
       throw new Error('wallet not found');

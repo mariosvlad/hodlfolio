@@ -3,10 +3,10 @@
     <v-card-title class="title">
       Assets
       <v-spacer></v-spacer>
-      <v-text-field append-icon="search" label="Search" single-line v-model="search"></v-text-field>
+      <v-text-field append-icon="file_search" label="Search" single-line v-model="search"></v-text-field>
     </v-card-title>
     <v-data-table :headers="headers" :items="assets" :options="options" :search="search" no-data-text="No assets added" dense>
-      <template v-slot:item.amount="{ item }">
+      <template v-slot:[`item.amount`]="{ item }">
         <v-edit-dialog v-if="!isReadOnly" lazy>
           <v-tooltip bottom>
             <template v-slot:activator="{ on }">
@@ -18,7 +18,7 @@
         </v-edit-dialog>
         <div v-else>{{ item.amount }}</div>
       </template>
-      <template v-slot:item.action="{ item }">
+      <template v-slot:[`item.action`]="{ item }">
         <v-flex d-inline-flex>
           <v-btn text icon color="indigo accent-1" @click="openCoinHistory(item.id)">
             <v-icon>timeline</v-icon>

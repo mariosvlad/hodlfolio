@@ -1,7 +1,7 @@
-// require the Koa server
-const server = require('../index');
 // require supertest
 const request = require('supertest');
+// require the Koa server
+const server = require('../index');
 // close the server after each test
 afterEach(() => {
   server.close();

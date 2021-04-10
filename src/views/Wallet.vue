@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import CoinTable from '../components/CoinTable.vue';
-import AddCoin from '../components/AddCoin.vue';
-import Highlights from '../components/Highlights.vue';
+import CoinTable from '@/components/CoinTable.vue';
+import AddCoin from '@/components/AddCoin.vue';
+import Highlights from '@/components/Highlights.vue';
 // eslint-disable-next-line
 import store from '../store';
 

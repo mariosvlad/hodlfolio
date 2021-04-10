@@ -22,11 +22,9 @@ const state = {
   showAddCoinDialog: false,
 };
 
-const store = new Vuex.Store({
+export default new Vuex.Store({
   state,
-  getters,
   mutations,
   actions,
+  getters,
 });
-
-export default store;

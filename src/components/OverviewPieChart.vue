@@ -98,5 +98,5 @@ export default {
 
 <style lang="sass">
 .highcharts-container
-  width: 100% !important;
+  width: 100% !important
 </style>

@@ -1,29 +1,18 @@
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
-import Vuetify from 'vuetify';
 import App from './App.vue';
-import router from './router/index';
-import store from './store/index';
 import './registerServiceWorker';
+import vuetify from './plugins/vuetify';
+import store from './store';
+import router from './router';
 
 sync(store, router);
 
 Vue.config.productionTip = false;
 
-Vue.use(Vuetify);
-
-const VuetifyOpts = {
-  icons: {
-    iconfont: 'mdiSvg',
-  },
-  theme: {
-    dark: true,
-  },
-};
-
 new Vue({
-  vuetify: new Vuetify(VuetifyOpts),
-  router,
+  vuetify,
   store,
+  router,
   render: h => h(App),
 }).$mount('#app');

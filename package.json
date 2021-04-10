@@ -2,48 +2,46 @@
   "name": "hodlfolio",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "Marios Vladimirou",
-  "license": "MIT",
+  "author": "Marios Vladimerou",
   "scripts": {
-    "start": "node server/index.js",
-    "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e",
-    "start:server": "nodemon server/index.js --exec babel-node --watch server",
-    "start:client": "vue-cli-service serve",
-    "dev": "run-p start:client start:server",
-    "clean": "rimraf dist",
+    "lint": "vue-cli-service lint",
     "build:ci": "npm-run-all clean build:client build:server",
     "build:client": "vue-cli-service build",
     "build:server": "babel -d ./dist/server ./server",
-    "migrate": "knex migrate:latest --cwd server",
-    "test": "jest server/test --forceExit",
+    "clean": "rimraf dist",
     "coverage": "jest server/test --forceExit --coverage",
     "cypress:open": "cypress open",
-    "cypress:run:ci": "node serve_and_run_cypress_ci.js"
+    "cypress:run:ci": "node serve_and_run_cypress_ci.js",
+    "dev": "run-p start:client start:server",
+    "migrate": "knex migrate:latest --cwd server",
+    "start": "node server/index.js",
+    "start:client": "vue-cli-service serve",
+    "start:server": "nodemon server/index.js --exec babel-node --watch server",
+    "test": "jest server/test --forceExit"
   },
   "dependencies": {
     "@koa/router": "^10.0.0",
     "axios": "^0.21.1",
     "big.js": "^6.0.0",
-    "chart.js": "^2.9.4",
     "cryptocoins-icons": "^2.9.0",
     "glob": "^7.1.6",
     "highcharts": "^9.0.0",
     "interval-cache": "^1.0.0",
-    "knex": "^0.21.0",
+    "knex": "^0.21.19",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
     "koa-combine-routers": "^4.0.2",
     "koa-compress": "^5.0.1",
-    "koa-helmet": "^6.0.0",
+    "koa-helmet": "^6.1.0",
     "koa-logger": "^3.0.0",
     "koa-ratelimit-lru": "^1.1.0",
     "koa-send": "^5.0.1",
     "koa-static": "5.0.0",
     "lodash": "^4.17.21",
-    "material-design-icons": "^3.0.1",
+    "material-design-icons-iconfont": "^6.1.0",
     "node-currency-swap": "^1.0.6",
-    "objection": "^2.2.14",
+    "objection": "^2.2.15",
     "pg": "^8.5.1",
     "register-service-worker": "^1.7.2",
     "uid-generator": "^2.0.0",
@@ -51,29 +49,30 @@
     "vue": "^2.6.12",
     "vue-highcharts": "0.1.0",
     "vue-router": "^3.5.1",
-    "vuetify": "^2.4.4",
+    "vuetify": "^2.4.9",
     "vuex": "^3.6.2",
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.17",
-    "@babel/node": "^7.12.17",
-    "@babel/plugin-proposal-class-properties": "^7.12.13",
-    "@babel/plugin-transform-runtime": "^7.12.17",
-    "@babel/preset-env": "^7.12.17",
-    "@mdi/js": "^5.9.55",
-    "@vue/cli-plugin-babel": "4.5.11",
-    "@vue/cli-plugin-e2e-cypress": "4.5.11",
-    "@vue/cli-plugin-eslint": "4.5.11",
-    "@vue/cli-plugin-pwa": "4.5.11",
-    "@vue/cli-service": "^4.5.11",
+    "@babel/cli": "^7.13.14",
+    "@babel/node": "^7.13.13",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-transform-runtime": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "@vue/cli-plugin-babel": "4.5.12",
+    "@vue/cli-plugin-e2e-cypress": "4.5.12",
+    "@vue/cli-plugin-eslint": "4.5.12",
+    "@vue/cli-plugin-pwa": "4.5.12",
+    "@vue/cli-plugin-router": "^4.5.12",
+    "@vue/cli-plugin-vuex": "^4.5.12",
+    "@vue/cli-service": "^4.5.12",
     "@vue/eslint-config-airbnb": "5.0.2",
     "@vue/eslint-config-prettier": "6.0.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-import": "^1.13.3",
     "babel-plugin-module-resolver": "^4.1.0",
     "copy-webpack-plugin": "^5.1.2",
-    "cypress": "^6.5.0",
+    "cypress": "^7.0.0",
     "eslint": "^6.8.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
@@ -81,26 +80,14 @@
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.7",
     "npm-run-all": "^4.1.5",
-    "sass-loader": "^8.0.2",
+    "sass": "^1.32.0",
+    "sass-loader": "^10.0.0",
     "supertest": "^4.0.2",
+    "vue-cli-plugin-vuetify": "^2.3.1",
     "vue-template-compiler": "^2.6.12",
+    "vuetify-loader": "^1.7.0",
     "webpack": "^4.46.0"
   },
-  "engines": {
-    "node": "12.x",
-    "npm": "6.x"
-  },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/dist/"
-    ]
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ],
   "eslintConfig": {
     "parserOptions": {
       "parser": "babel-eslint"
@@ -109,5 +96,21 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ]
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/"
+    ]
+  },
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  },
+  "license": "MIT"
 }
