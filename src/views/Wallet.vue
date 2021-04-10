@@ -1,20 +1,22 @@
 <template>
-  <v-container fluid grid-list-md :class="{ fabPadding: !$store.getters.isReadOnly }">
-    <v-layout row wrap>
-      <v-flex xs12 sm6 md3 align-start>
-        <highlights></highlights>
-      </v-flex>
-      <v-flex xs12 sm6 md9>
-        <overview-pie-chart></overview-pie-chart>
-      </v-flex>
-    </v-layout>
-    <v-layout row>
-      <v-flex xs12>
-        <coin-table></coin-table>
-      </v-flex>
-    </v-layout>
-    <add-coin v-if="!$store.getters.isReadOnly && $store.getters.fetchedData"></add-coin>
-  </v-container>
+  <v-responsive>
+    <v-container fluid grid-list-md :class="{ fabPadding: !$store.getters.isReadOnly }">
+      <v-layout row wrap>
+        <v-flex xs12 sm6 md3 align-start>
+          <highlights></highlights>
+        </v-flex>
+        <v-flex xs12 sm6 md9>
+          <overview-pie-chart></overview-pie-chart>
+        </v-flex>
+      </v-layout>
+      <v-layout row>
+        <v-flex xs12>
+          <coin-table></coin-table>
+        </v-flex>
+      </v-layout>
+      <add-coin v-if="!$store.getters.isReadOnly && $store.getters.fetchedData"></add-coin>
+    </v-container>
+  </v-responsive>
 </template>
 
 <script>
