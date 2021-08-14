@@ -8,7 +8,7 @@ export default {
       const details = { ...coinInfo, ...asset };
       details.amount = Big(asset.amount);
 
-      if (coinInfo) {
+      if (coinInfo && coinInfo.price) {
         details.value = Big(asset.amount).times(coinInfo.price);
         details.price = Big(coinInfo.price);
 
